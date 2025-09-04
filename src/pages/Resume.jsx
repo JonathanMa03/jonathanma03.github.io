@@ -1,4 +1,5 @@
 function Resume() {
+  const base = import.meta.env.BASE_URL;
   const certifications = [
     { label: 'Bloomberg Market Concepts', file: 'cert-bloomberg-1.pdf' },
     { label: 'Google Data Analytics', file: 'cert-google-data.pdf' },
@@ -49,7 +50,7 @@ function Resume() {
               <strong>{label}</strong>
               <div style={{ marginTop: '0.5rem' }}>
                 <iframe
-                  src={`/JonathanMa.github.io/${file}`}
+                  src={`${base}${file}`}
                   title={label}
                   style={{
                     width: '100%',
@@ -61,7 +62,7 @@ function Resume() {
                 />
               </div>
               <a
-                href={`/JonathanMa.github.io/${file}`}
+                href={`${base}${file}`}
                 download
                 style={{
                   display: 'inline-block',

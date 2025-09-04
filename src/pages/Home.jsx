@@ -1,9 +1,10 @@
 function Home() {
+  const base = import.meta.env.BASE_URL;
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <img
-          src="/JonathanMa.github.io/me.jpg"
+          src="${base}me.jpg"
           alt="Jonathan Y. Ma"
           style={{
             width: '30vw',
