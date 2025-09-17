@@ -4,7 +4,7 @@ function Home() {
     <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <img
-          src="${base}me.jpg"
+          src={`${base}me.jpg`}
           alt="Jonathan Y. Ma"
           style={{
             width: '30vw',
@@ -31,7 +31,7 @@ function Home() {
       </p>
 
       <p>
-        <strong>Interests:</strong> Financial Modeling, Statistical Modeling and Simulation, Econometrics, Inventory Tracking
+        <strong>Interests:</strong> Financial Modeling, Statistical Modeling and Simulation, Econometrics, Healthcare Data Science
       </p>
     </div>
   );

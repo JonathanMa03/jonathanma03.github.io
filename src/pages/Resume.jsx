@@ -40,7 +40,7 @@ function Resume() {
             <li><strong>Data Analysis & Visualization:</strong> Pandas, dplyr, ggplot2, seaborn, matplotlib, NumPy</li>
             <li><strong>Statistical & Quantitative Methods:</strong> Time Series, Bayesian Inference, Monte Carlo, Optimization</li>
             <li><strong>Tools & Platforms:</strong> Microsoft Office Suite, Git, Jupyter, VS Code, Bloomberg Terminal</li>
-            <li><strong>Business & Finance:</strong> Financial Modeling, Investment Science, Econometrics, Business Analytics</li>
+            <li><strong>Business & Finance:</strong> Financial Modeling, Database Management, Econometrics, Business Analytics</li>
           </ul>
 
         <h3>Certifications</h3>

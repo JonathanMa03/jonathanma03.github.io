@@ -23,10 +23,10 @@ function About() {
   
         <h2>Career Goals & Interests</h2>
         <p>
-          I aim to work at the intersection of quantitative finance, data science, and systems engineering.
+          I aim to work at the intersection of healthcare data science, operations research, and systems engineering.
           My background spans both business and technical domains, and I'm passionate about using math,
-          modeling, and analytics to improve real-world decision-making. Whether it’s financial optimization
-          or predictive systems modeling, I enjoy building strategies that are both elegant and practical.
+          modeling, and analytics to improve real-world decision-making. Whether it’s supply chain optimization
+          or public surveillence modeling, I enjoy building strategies that are both fair and practical.
         </p>
       </>
     );

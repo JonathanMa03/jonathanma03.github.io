@@ -1,6 +1,13 @@
 function Projects() {
   const projects = [
     {
+      name: "A Robust Bayesian Approach to Modeling Healthcare Supply Chains",
+      description:
+        "STC-Developed a case study using proxy datasets (FDA Drug Shortages, CDC Supply Reports) to forecast demand for critical medical supplies. Built a Bayesian multivariate forecasting model to capture interdependencies, integrated distributionally robust optimization (DRO) for uncertainty-aware procurement strategies, and applied diffusion modeling to simulate extreme shocks and stress-test system resilience.",
+      tech: "R (dplyr, ggplot2, bvar)",
+      link: " ",
+    },
+    {
       name: "Predictors of Academic Performance: The Role of Alcohol Consumption and Gender",
       description:
         "Explores how weekday and weekend alcohol consumption relate to student academic performance, and whether gender moderates this relationship. Built with a linear regression framework including interaction terms and over 30 demographic, behavioral, and socioeconomic controls.",
