@@ -21,7 +21,7 @@ function Home() {
 
       <h1>Jonathan Y. Ma</h1>
       <h2>
-        Data-Driven Problem Solver | Finance & Economics | Industrial Engineering • Applied Statistics • Operations Research
+        Aspiring Bayesian Econometrician | Finance & Economics | Industrial Engineering • Applied Statistics • Operations Research
       </h2>
 
       <p style={{ marginTop: '1.5rem' }}>
@@ -31,7 +31,7 @@ function Home() {
       </p>
 
       <p>
-        <strong>Interests:</strong> Financial Modeling, Statistical Modeling and Simulation, Econometrics, Healthcare Data Science
+        <strong>Interests:</strong> Probabilistic Machine Learning, Bayesian Modeling and Computation, Econometrics, Healthcare Data Science
       </p>
     </div>
   );

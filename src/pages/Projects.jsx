@@ -1,11 +1,25 @@
 function Projects() {
   const projects = [
+    /*{
+      name: "",
+      description:
+        "",
+      tech: "",
+      link: "",
+    },*/
     {
       name: "A Robust Bayesian Approach to Modeling Healthcare Supply Chains",
       description:
         "STC-Developed a case study using proxy datasets (FDA Drug Shortages, CDC Supply Reports) to forecast demand for critical medical supplies. Built a Bayesian multivariate forecasting model to capture interdependencies, integrated distributionally robust optimization (DRO) for uncertainty-aware procurement strategies, and applied diffusion modeling to simulate extreme shocks and stress-test system resilience.",
       tech: "R (dplyr, ggplot2, bvar)",
       link: " ",
+    },
+    {
+      name: "Bayesian Hierarchical Modeling and Clustering of Malignant Cancer Diagnoses",
+      description:
+        "This project investigates the demographic and clinical factors associated with late-stage breast cancer diagnoses using a multilevel Bayesian logistic regression framework. Drawing on the SEER cancer registry data, we assess how patient-level characteristics (e.g., age, sex, tumor size, race, marital status) and region-level contextual effects contribute to the likelihood of late-stage detection.",
+      tech: "R (dplyr, ggplot2, brms)",
+      link: "https://github.com/JonathanMa03/bayesproject-MaZhuFeng-FA25/",
     },
     {
       name: "Predictors of Academic Performance: The Role of Alcohol Consumption and Gender",

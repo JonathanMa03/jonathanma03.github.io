@@ -12,8 +12,9 @@ function About() {
         <h2>Skills</h2>
         <ul>
           <li>Bloomberg Terminal</li>
+          <li>SP Capital IQ</li>
           <li>
-            R: e1071, dplyr, tidyverse, CARET, gptstudio, lavaan, ggplot
+            R: e1071, dplyr, tidyverse, CARET, gptstudio, lavaan, ggplot, brms, bvar, TSA
           </li>
           <li>
             Python: sklearn, scipy, pandas, sqlite3, tensorflow, plotly, dash, bs4, selenium, neuralforecast
@@ -23,7 +24,7 @@ function About() {
   
         <h2>Career Goals & Interests</h2>
         <p>
-          I aim to work at the intersection of healthcare data science, operations research, and systems engineering.
+          I aim to work at the intersection of healthcare data science, operations research, and Bayesian Econometrics.
           My background spans both business and technical domains, and I'm passionate about using math,
           modeling, and analytics to improve real-world decision-making. Whether it’s supply chain optimization
           or public surveillence modeling, I enjoy building strategies that are both fair and practical.
