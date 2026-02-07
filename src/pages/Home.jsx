@@ -30,21 +30,21 @@ function Home() {
 
       <h1>Jonathan Y. Ma</h1>
       <h2>
-        Aspiring Bayesian Eonometrician | Finance & Economics | Industrial
+        Aspiring Bayesian Econometrician | Finance & Economics | Industrial
         Engineering • Applied Statistics • Operations Research
       </h2>
 
       <p style={{ marginTop: "1.5rem" }}>
         I’m a Finance and Economics graduate with a strong foundation in Applied
         Mathematics, currently pursuing a Master’s in Engineering at Johns
-        Hopkins. My work bridges Industrial Engineering, Statistics, and OR,
-        focused on solving real-world problems through data, modeling, and
+        Hopkins. My work bridges Industrial Engineering, Applied Statistics, and Optimization,
+        focused on solving real-world problems through empirical robustness, modeling, and
         optimization.
       </p>
 
       <p>
-        <strong>Interests:</strong> Probabilistic Machine Learning, Bayesian
-        Modeling and Computation, Econometrics, Healthcare Data Science
+        <strong>Interests:</strong> Probabilistic Foundations of Machine Learning, Bayesian
+        Modeling and Computation, Macro-Econometrics, Healthcare Data Science, Density Estimation
       </p>
 
       {/* Business Card */}
@@ -142,7 +142,7 @@ function Home() {
             fontSize: "0.95rem",
           }}
         >
-          Click the card to flip
+          Click the card to flip!
         </div>
 
         <div style={{ marginTop: "1rem" }}>
@@ -159,7 +159,7 @@ function Home() {
               color: "white",
             }}
           >
-            Download business card (PDF)
+            Download Business Card as (PDF)
           </a>
         </div>
       </div>
