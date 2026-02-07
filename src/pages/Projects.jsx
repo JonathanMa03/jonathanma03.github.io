@@ -8,7 +8,7 @@ function Projects() {
       link: "",
     },*/
     {
-      name: "A Robust Bayesian Approach to Modeling Healthcare Supply Chains",
+      name: "robustBVAR: A Distributionally Robust Bayesian VAR Framework with Diffusion-Based Innovation Modeling",
       description:
         "STC-Developed a case study using proxy datasets (FDA Drug Shortages, CDC Supply Reports) to forecast demand for critical medical supplies. Built a Bayesian multivariate forecasting model to capture interdependencies, integrated distributionally robust optimization (DRO) for uncertainty-aware procurement strategies, and applied diffusion modeling to simulate extreme shocks and stress-test system resilience.",
       tech: "R (dplyr, ggplot2, bvar)",
@@ -61,7 +61,7 @@ function Projects() {
 
   return (
     <div>
-      <h1>Projects</h1>
+      <h1>My Research</h1>
       {projects.map((project, index) => (
         <div key={index} style={{ marginBottom: '2rem' }}>
           <h2>{project.name}</h2>

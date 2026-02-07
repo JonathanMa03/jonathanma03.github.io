@@ -1,7 +1,7 @@
 function Contact() {
     return (
       <>
-        <h1>Contact Me</h1>
+        <h1>My Links and Socials</h1>
         <p>You can reach me at:</p>
         <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2rem' }}>
           <li>
@@ -30,6 +30,17 @@ function Contact() {
               style={{ color: '#cbd6f6' }}
             >
               github.com/JonathanMa03
+            </a>
+          </li>
+          <li>
+            ORCID:{' '}
+            <a
+              href="https://orcid.org/0009-0005-1185-3281"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#cbd6f6' }}
+            >
+              orcid.org/0009-0005-1185-3281
             </a>
           </li>
         </ul>
