@@ -19,7 +19,7 @@ function Projects() {
       description:
         "This project investigates the demographic and clinical factors associated with late-stage breast cancer diagnoses using a multilevel Bayesian logistic regression framework. Drawing on the SEER cancer registry data, we assess how patient-level characteristics (e.g., age, sex, tumor size, race, marital status) and region-level contextual effects contribute to the likelihood of late-stage detection.",
       tech: "R (dplyr, ggplot2, brms)",
-      link: "https://github.com/JonathanMa03/bayesproject-MaZhuFeng-FA25/",
+      link: "https://absj.org/index.php/absj/article/view/114",
     },
     {
       name: "Predictors of Academic Performance: The Role of Alcohol Consumption and Gender",
