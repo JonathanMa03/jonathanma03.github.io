@@ -15,7 +15,7 @@ function Resume() {
       <h1>Resume</h1>
       <p>You can view or download my full resume using the link below:</p>
       <a
-        href="https://docs.google.com/document/d/1DJE0K8YW557yiEXnC6714HlwsYG4mzd9/edit?usp=sharing&ouid=103287810301603708658&rtpof=true&sd=true"
+        href="https://www.overleaf.com/read/tqtswskhzfrg#66c64d"
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -28,7 +28,7 @@ function Resume() {
           textDecoration: 'none',
         }}
       >
-        View Resume (Google Doc)
+        View Resume 
       </a>
 
       <div style={{ marginTop: '3rem' }}>
