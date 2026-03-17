@@ -8,11 +8,18 @@ function Projects() {
       link: "",
     },*/
     {
+      name: "Diffusion-Based Topic Evolution in Biomedical Literature",
+      description:
+        "This project builds a dynamic framework for modeling how biomedical research topics evolve over time using modern machine learning and probabilistic methods. Starting from raw PubMed data, abstracts are collected via the API, cleaned, and stored in a structured SQLite database. Document embeddings are generated using transformer-based models, and topics are discovered within each year using HDBSCAN clustering. These topics are then aligned across time into trajectories, allowing for both structural tracking (topic lineage persistence, birth, and disappearance) and geometric analysis (semantic drift in embedding space via PCA). To capture uncertainty and nonlinear evolution, a diffusion model is trained on topic trajectories, enabling probabilistic modeling of how topics move and change over time.",
+      tech: "Python (pandas, PyTorch, SQLite, sentence-transformers, plotly)",
+      link: "https://github.com/JonathanMa03/diffusion-topic-evaluation",
+    },
+    {
       name: "robustBVAR: A Distributionally Robust Bayesian VAR Framework with Diffusion-Based Innovation Modeling",
       description:
         "STC-Developed a case study using proxy datasets (FDA Drug Shortages, CDC Supply Reports) to forecast demand for critical medical supplies. Built a Bayesian multivariate forecasting model to capture interdependencies, integrated distributionally robust optimization (DRO) for uncertainty-aware procurement strategies, and applied diffusion modeling to simulate extreme shocks and stress-test system resilience.",
       tech: "R (dplyr, ggplot2, bvar)",
-      link: " ",
+      link: "https://github.com/JonathanMa03/innovative-droBVAR",
     },
     {
       name: "Bayesian Hierarchical Modeling and Clustering of Malignant Cancer Diagnoses",
