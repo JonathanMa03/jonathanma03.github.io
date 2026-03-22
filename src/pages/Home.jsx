@@ -44,8 +44,35 @@ function Home() {
 
       <p>
         <strong>Interests:</strong> Probabilistic Foundations of Machine Learning, Bayesian
-        Modeling and Computation, Macro-Econometrics, Healthcare Data Science, Density Estimation
+        Modeling and Computation, Macro-Econometrics, LLMs and Agentic AI
       </p>
+
+      <div style={{ marginTop: "2rem", textAlign: "center" }}>
+      <p style={{ maxWidth: "700px", margin: "0 auto" }}>
+        I built a beta AI Assistant that has access to my Resume, Course Notes, and
+        Research. You can use it to ask questions about my experience, research,
+        academic background, and technical interests.
+      </p>
+
+      <div style={{ marginTop: "1rem" }}>
+        <a
+          href="https://agentic-jym.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-block",
+            padding: "0.6rem 1rem",
+            borderRadius: "10px",
+            textDecoration: "none",
+            border: "1px solid rgba(255,255,255,0.18)",
+            background: "rgba(255,255,255,0.06)",
+            color: "white",
+          }}
+        >
+          Chat with my AI Assistant →
+        </a>
+      </div>
+    </div>
 
       {/* Business Card */}
       <div style={{ marginTop: "2.5rem" }}>
