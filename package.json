@@ -13,8 +13,15 @@
   },
   "homepage": "https://JonathanMa03.github.io/JonathanMa.github.io",
   "dependencies": {
+    "framer-motion": "^12.38.0",
+    "gray-matter": "^4.0.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.6.0",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.1",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

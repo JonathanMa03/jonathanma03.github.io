@@ -1,51 +1,132 @@
+import {
+  FiMail,
+  FiLinkedin,
+  FiGithub,
+} from "react-icons/fi";
+import { FaInstagram, FaFacebook, FaOrcid } from "react-icons/fa";
+
 function Contact() {
-    return (
-      <>
-        <h1>My Links and Socials</h1>
-        <p>You can reach me at:</p>
-        <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2rem' }}>
-          <li>
-            📧 Email:{' '}
-            <a href="mailto:jonathanma217@outlook.com" style={{ color: '#cbd6f6' }}>
-              jonathanma217@outlook.com
-            </a>
-          </li>
-          <li>
-            🧑🏽‍💼 LinkedIn:{' '}
-            <a
-              href="https://www.linkedin.com/in/jonathanma217/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: '#cbd6f6' }}
+  const links = [
+    {
+      label: "Email",
+      value: "jonathanma217@outlook.com",
+      href: "mailto:jonathanma217@outlook.com",
+      icon: <FiMail />,
+    },
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/jonathanma217",
+      href: "https://www.linkedin.com/in/jonathanma217/",
+      icon: <FiLinkedin />,
+    },
+    {
+      label: "GitHub",
+      value: "github.com/JonathanMa03",
+      href: "https://github.com/JonathanMa03",
+      icon: <FiGithub />,
+    },
+    {
+      label: "ORCID",
+      value: "orcid.org/0009-0005-1185-3281",
+      href: "https://orcid.org/0009-0005-1185-3281",
+      icon: <FaOrcid />,
+    },
+    {
+      label: "Instagram",
+      value: "@jonmapiano",
+      href: "https://www.instagram.com/jonmapiano/",
+      icon: <FaInstagram />,
+    },
+    {
+      label: "Facebook",
+      value: "jonmapiano",
+      href: "https://www.facebook.com/jonmapiano",
+      icon: <FaFacebook />,
+    },
+  ];
+
+  return (
+    <section className="section section-narrow">
+      <p className="eyebrow">05. Contact</p>
+      <h1 className="section-heading">Get In Touch</h1>
+
+      <p style={{ maxWidth: "600px", marginBottom: "2rem" }}>
+        I’m always open to discussing research, collaborations, or opportunities
+        in data science, statistics, and applied modeling. Feel free to reach out
+        through any of the platforms below.
+      </p>
+
+      <div
+        style={{
+          display: "grid",
+          gap: "1rem",
+        }}
+      >
+        {links.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            target={item.label !== "Email" ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            className="hover-lift"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              padding: "1rem 1.25rem",
+              borderRadius: "14px",
+              textDecoration: "none",
+              border: "1px solid rgba(255,255,255,0.12)",
+              background: "rgba(255,255,255,0.03)",
+              color: "var(--color-text-main)",
+              transition: "all 0.25s ease",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "1.25rem",
+                color: "var(--color-accent)",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
-              linkedin.com/in/jonathanma217
-            </a>
-          </li>
-          <li>
-            💻 GitHub:{' '}
-            <a
-              href="https://github.com/JonathanMa03"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: '#cbd6f6' }}
+              {item.icon}
+            </div>
+
+            <div style={{ flex: 1 }}>
+              <p
+                style={{
+                  margin: 0,
+                  fontWeight: 600,
+                }}
+              >
+                {item.label}
+              </p>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "0.85rem",
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                {item.value}
+              </p>
+            </div>
+
+            <div
+              style={{
+                fontSize: "0.9rem",
+                color: "var(--color-accent)",
+              }}
             >
-              github.com/JonathanMa03
-            </a>
-          </li>
-          <li>
-            ORCID:{' '}
-            <a
-              href="https://orcid.org/0009-0005-1185-3281"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: '#cbd6f6' }}
-            >
-              orcid.org/0009-0005-1185-3281
-            </a>
-          </li>
-        </ul>
-      </>
-    );
-  }
-  
-  export default Contact;
+              →
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default Contact;
