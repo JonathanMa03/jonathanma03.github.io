@@ -243,12 +243,20 @@
   
   @media (max-width: 640px) {
     .site-header {
+      position: relative;
       height: auto;
-      min-height: var(--nav-height);
+      min-height: unset;
+      backdrop-filter: none;
+      background: var(--color-bg);
+      opacity: 1;
+      box-shadow: none;
+      border-bottom: 1px solid rgba(136, 146, 176, 0.08);
     }
   
     .site-nav {
-      padding: 1rem 0;
+      width: min(100% - 1.5rem, var(--content-max));
+      padding: 1rem 0 1.25rem;
+      height: auto;
       align-items: flex-start;
       gap: var(--space-4);
     }
@@ -261,6 +269,20 @@
     .site-nav-links {
       width: 100%;
       align-items: flex-start;
+      gap: 0.9rem;
+      flex-wrap: nowrap;
+    }
+  
+    .site-nav-link {
+      font-size: 1.05rem;
+    }
+  
+    .site-resume-btn {
+      margin-top: 0.4rem;
+    }
+  
+    .site-content {
+      padding-top: 2rem;
     }
   }
   .site-header {
