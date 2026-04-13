@@ -50,3 +50,16 @@ Edit `src/data/experience.js` with
   ]
 }
 ```
+
+## Deploying
+
+- Test locally at `npm run dev`
+- Run the following to test for deployment errors: `npm run build` and `npm run preview`
+- commit changes (updates the branch, either v2 or main)
+```bash
+git add .
+git commit -m "your message"
+git push
+```
+- deploy at `npm run deploy`
+- wait 60 sec and refresh the page
