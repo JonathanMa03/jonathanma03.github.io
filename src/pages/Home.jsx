@@ -8,7 +8,7 @@ function Home() {
   const CARD_BACK = 'business-card-back.png';
   const CARD_PDF = 'business-card.pdf';
 
-  const phrases = ['Finance', 'Economics', 'Clinical Data Science', 'AI'];
+  const phrases = ['Finance', 'Economics', 'Clinical Data Science', 'Artificial Intelligence', 'Healthcare Analytics'];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -75,7 +75,7 @@ function Home() {
             |
           </span>
         </span>
-        .
+      .
       </h2>
 
       <div
