@@ -15,6 +15,19 @@ const projects = [
       category: "Research / NLP / Generative Modeling",
     },
     {
+      name: "Causal Survival Inference from Reconstructed IPD",
+      description:
+        "A Bayesian nonparametric framework for estimating causal treatment effects from reconstructed Kaplan–Meier data. Combines covariate augmentation, target-population reweighting, and uncertainty quantification via Dirichlet weighting, with a model-based NTR hazard extension. Demonstrates that reconstruction pipelines and modeling assumptions can materially change clinical conclusions.",
+      tech: [
+        "Python",
+        "pandas",
+        "numpy",
+        "matplotlib"
+      ],
+      link: "https://github.com/JonathanMa03/NPBS-project-MaZhu",
+      category: "Inverse Problems / Biostatistics / Causal Inference",
+    },
+    {
       name: "robustBVAR: A Distributionally Robust Bayesian VAR Framework",
       description:
         "Combines Bayesian VAR modeling with distributionally robust optimization and diffusion-based innovation modeling to simulate shocks and stress-test multivariate systems.",
@@ -31,12 +44,12 @@ const projects = [
       category: "Research / Healthcare / Bayesian Modeling",
     },
     {
-      name: "Predictors of Academic Performance",
+      name: "Comparative Analysis of BVARs with Flexible Innovation Distributions",
       description:
-        "Explores alcohol consumption and academic performance using regression with interaction terms and extensive controls.",
-      tech: ["R", "dplyr", "ggplot2"],
-      link: "https://github.com/JonathanMa03/Applied-Statistics-Final-Project",
-      category: "Applied Statistics",
+        "Implements and compares Bayesian VAR models with Gaussian, Student-t, mixture, and stochastic volatility innovations for financial time series. Uses MCMC-based inference and rolling forecasts to evaluate predictive densities and tail risk (VaR, ES), demonstrating that regime-aware and heavy-tailed models outperform standard Gaussian assumptions, especially during crisis periods.",
+      tech: ["Python","numpy","pandas","scipy","matplotlib","PyMC","yfinance"],
+      link: "https://github.com/JonathanMa03/pmlproject-MaZhuTao-SP26",
+      category: "Risk Modeling / Bayesian Time Series / Quantitative Finance",
     },
     {
       name: "Predicting Depression: A Comparative ML Approach",
