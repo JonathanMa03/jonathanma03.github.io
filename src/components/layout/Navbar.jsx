@@ -41,7 +41,7 @@ function Navbar() {
               `site-resume-btn ${isActive ? 'active' : ''}`
             }
           >
-            Resume
+            Resume/CV
           </NavLink>
         </div>
       </nav>
