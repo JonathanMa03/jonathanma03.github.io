@@ -1,5 +1,18 @@
 const projects = [
     {
+      name: "DiffIndEye: Diffusion-Based Retinal OCT Inpainting",
+      description:
+        "Research-oriented framework for studying diffusion-based image inpainting on retinal OCT scans. The project treats OCT reconstruction as an inverse problem, where partially masked retinal images are reconstructed using classical baselines and conditional DDPMs. It includes preprocessing pipelines, synthetic stripe corruption, baseline inpainting methods, modular diffusion training, checkpoint-based evaluation, and reproducible reconstruction experiments.",
+      tech: [
+        "Python",
+        "PyTorch",
+        "Medical Imaging",
+        "OpenCV",
+      ],
+      link: "https://github.com/JonathanMa03/diff-in-eye",
+      category: "Medical Imaging / Diffusion Models / Inverse Problems",
+    },
+    {
       name: "Diffusion-Based Topic Evolution in Biomedical Literature",
       description:
         "Builds a dynamic framework for modeling how biomedical research topics evolve over time using modern machine learning and probabilistic methods. PubMed abstracts are collected, embedded, clustered, and aligned into trajectories. A diffusion model captures uncertainty and nonlinear topic evolution.",
@@ -28,12 +41,12 @@ const projects = [
       category: "Inverse Problems / Biostatistics / Causal Inference",
     },
     {
-      name: "robustBVAR: A Distributionally Robust Bayesian VAR Framework",
+      name: "innovcal: A deep learning framework for calibration under disributional misspecification",
       description:
-        "Combines Bayesian VAR modeling with distributionally robust optimization and diffusion-based innovation modeling to simulate shocks and stress-test multivariate systems.",
+        "We study innovation feedback failure modes through the lenses of predictive calibration using VARs.",
       tech: ["R", "dplyr", "ggplot2", "bvar"],
       link: "https://github.com/JonathanMa03/innovative-droBVAR",
-      category: "Research / Bayesian Time Series / Optimization",
+      category: "Research / Time Series / Optimization",
     },
     {
       name: "Bayesian Hierarchical Modeling of Cancer Diagnoses",

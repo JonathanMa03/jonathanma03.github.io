@@ -8,7 +8,7 @@ function Home() {
   const CARD_BACK = 'business-card-back.png';
   const CARD_PDF = 'business-card.pdf';
 
-  const phrases = ['Finance', 'Economics', 'Clinical Data Science', 'Artificial Intelligence', 'Healthcare Analytics'];
+  const phrases = ['Agentic Frameworks', 'RAG Systems', 'Medical Imaging', 'Data-Driven Optimization', 'Inverse Problems', 'Covariate Augmentation'];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -62,7 +62,7 @@ function Home() {
           minHeight: '3.2rem',
         }}
       >
-        I build quantitative tools for {' '}
+        I build empirical tools for {' '}
         <span style={{ color: 'var(--color-accent)' }}>
           {displayedText}
           <span
@@ -106,15 +106,13 @@ function Home() {
           <p style={{ fontSize: '1.05rem' }}>
             I’m a Finance and Economics graduate with a strong foundation in
             Applied Mathematics, currently pursuing a Master’s in Engineering at
-            Johns Hopkins. My work bridges Industrial Engineering, Applied
-            Statistics, and Optimization, focused on solving real-world problems
-            through empirical robustness, modeling, and optimization.
+            Johns Hopkins. My work bridges Bayesian Inference, Statistical Learning, and Optimization, focused on solving real-world problems
+            through the lenses of robust approaches and calibration.
           </p>
 
           <p style={{ fontSize: '1.05rem' }}>
             <strong style={{ color: 'var(--color-heading)' }}>Interests:</strong>{' '}
-            Probabilistic Foundations of Machine Learning, Bayesian Modeling and
-            Computation, Macro-Econometrics, LLMs and Agentic AI
+            Probabilistic Machine Learning, Data-Driven Optimization, Efficient Causal Inference, Scaling Theory for LLMs
           </p>
         </div>
       </div>

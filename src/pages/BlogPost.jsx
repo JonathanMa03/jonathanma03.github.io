@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
@@ -7,6 +8,8 @@ import posts from '../data/posts';
 
 function BlogPost() {
   const { slug } = useParams();
+  const [copied, setCopied] = useState(false);
+
   const postIndex = posts.findIndex((item) => item.slug === slug);
   const post = posts[postIndex];
 
@@ -28,17 +31,15 @@ function BlogPost() {
   const handleShare = async () => {
     const shareUrl = window.location.href;
 
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: post.title,
-          text: post.excerpt || post.title,
-          url: shareUrl,
-        });
-      } catch {}
-    } else {
+    try {
       await navigator.clipboard.writeText(shareUrl);
-      alert('Post link copied to clipboard.');
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 1800);
+    } catch {
+      alert('Could not copy link. Please copy it manually.');
     }
   };
 
@@ -112,9 +113,14 @@ function BlogPost() {
         <button
           onClick={handleShare}
           className="site-resume-btn"
-          style={{ background: 'transparent' }}
+          style={{
+            background: copied ? 'rgba(100,255,218,0.12)' : 'transparent',
+            color: copied ? 'var(--color-accent)' : undefined,
+            borderColor: copied ? 'rgba(100,255,218,0.35)' : undefined,
+            transition: 'all 0.25s ease',
+          }}
         >
-          Share Post
+          {copied ? 'Link copied successfully' : 'Share Post'}
         </button>
       </div>
 
@@ -170,7 +176,10 @@ function BlogPost() {
               <p className="eyebrow" style={{ marginBottom: '0.35rem' }}>
                 Previous
               </p>
-              <Link to={`/blog/${prevPost.slug}`} style={{ color: 'var(--color-heading)' }}>
+              <Link
+                to={`/blog/${prevPost.slug}`}
+                style={{ color: 'var(--color-heading)' }}
+              >
                 ← {prevPost.title}
               </Link>
             </>
@@ -183,7 +192,10 @@ function BlogPost() {
               <p className="eyebrow" style={{ marginBottom: '0.35rem' }}>
                 Next
               </p>
-              <Link to={`/blog/${nextPost.slug}`} style={{ color: 'var(--color-heading)' }}>
+              <Link
+                to={`/blog/${nextPost.slug}`}
+                style={{ color: 'var(--color-heading)' }}
+              >
                 {nextPost.title} →
               </Link>
             </>
