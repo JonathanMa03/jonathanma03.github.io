@@ -1,6 +1,6 @@
 # Jonathan Ma's Personal Website
 
-My [personal website](https://jonathanma03.github.io/) as a static git page built using React and Vite. This is version 1, version 2 is forthcoming and uses Netlify for deployment.
+My [personal website](https://jonathanma03.github.io/) built using React and Vite. Netlify for deployment, and credit to [Brittany Chiang](brittanychiang.com) for the sick design, which I came across. 
 
 ## Adding Content
 

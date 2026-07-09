@@ -8,7 +8,7 @@ function Home() {
   const CARD_BACK = 'business-card-back.png';
   const CARD_PDF = 'business-card.pdf';
 
-  const phrases = ['Agentic Frameworks', 'RAG Systems', 'Medical Imaging', 'Data-Driven Optimization', 'Inverse Problems', 'Covariate Augmentation'];
+  const phrases = ['Agentic Benchmarking', 'Robust Reasoning', 'Medical Imaging', 'Data-Driven Optimization', 'Inverse Problems', 'Covariate Reconstruction'];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
