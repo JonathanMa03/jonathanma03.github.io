@@ -57,14 +57,14 @@ function About() {
       <h2>Education</h2>
       <ul>
         <li>BS Finance, BA Economics, Minor in Statistics — Rutgers University</li>
-        <li>MSE Applied Mathematics and Statistics — Whiting School of Engineering, Johns Hopkins</li>
+        <li>MSE Applied Mathematics and Statistics — Whiting School of Engineering, Johns Hopkins University</li>
       </ul>
 
       <h2>Skills</h2>
       <ul>
-        <li><strong>Programming:</strong> Python, R, Julia, MATLAB, SQL, Mathematica</li>
-        <li><strong>Data Analysis & Visualization:</strong> pandas, dplyr, ggplot2, seaborn, matplotlib, NumPy</li>
-        <li><strong>Statistical & Quantitative Methods:</strong> Time Series, Bayesian Inference, Monte Carlo, Optimization, Convexity</li>
+        <li><strong>Programming:</strong> Python, R, Julia, MATLAB, SQL, Mathematica, Fortran, STATA</li>
+        <li><strong>Data Analysis & Visualization:</strong> pandas, dplyr, ggplot2, seaborn, matplotlib, NumPy, Tableau</li>
+        <li><strong>Statistical & Quantitative Methods:</strong> Multivariate Time Series Analysis, Bayesian Computation, Monte Carlo Simulation, Stochastic Controls</li>
         <li><strong>Tools & Platforms:</strong> Microsoft Office Suite, Git, Jupyter, VS Code, Bloomberg Terminal, S&amp;P Capital IQ</li>
         <li><strong>R Libraries:</strong> e1071, dplyr, tidyverse, CARET, gptstudio, lavaan, ggplot2, brms, bvar, TSA</li>
         <li><strong>Python Libraries:</strong> sklearn, scipy, pandas, sqlite3, tensorflow, plotly, dash, bs4, selenium, neuralforecast</li>
@@ -76,7 +76,7 @@ function About() {
         and Bayesian econometrics. My background spans both business and technical domains,
         and I’m passionate about using math, modeling, and analytics to improve real-world
         decision-making. Whether it’s supply chain optimization or public surveillance modeling,
-        I enjoy building strategies that are both fair and practical.
+        I enjoy building strategies that are scalable, fair and practical.
       </p>
 
       <div style={{ marginTop: "3rem" }}>

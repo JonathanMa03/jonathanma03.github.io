@@ -8,7 +8,7 @@ function Home() {
   const CARD_BACK = 'business-card-back.png';
   const CARD_PDF = 'business-card.pdf';
 
-  const phrases = ['Agentic Benchmarking', 'Robust Reasoning', 'Medical Imaging', 'Data-Driven Optimization', 'Inverse Problems', 'Covariate Reconstruction'];
+  const phrases = ['Agentic Benchmarking', 'Robust Reasoning', 'Medical Imaging', 'Data-Driven Optimization', 'Biomarker Detection', 'Precision Healthcare'];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -62,7 +62,7 @@ function Home() {
           minHeight: '3.2rem',
         }}
       >
-        I build empirical tools for {' '}
+        I implement tools for {' '}
         <span style={{ color: 'var(--color-accent)' }}>
           {displayedText}
           <span
@@ -104,15 +104,15 @@ function Home() {
 
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
           <p style={{ fontSize: '1.05rem' }}>
-            I’m a Finance and Economics graduate with a strong foundation in
-            Applied Mathematics, currently pursuing a Master’s in Engineering at
-            Johns Hopkins. My work bridges Bayesian Inference, Statistical Learning, and Optimization, focused on solving real-world problems
-            through the lenses of robust approaches and calibration.
+            I’m a Financial Econometrics graduate with strong interests in
+            Applied Mathematics/Statistics, currently pursuing a Master’s in Engineering at
+            Johns Hopkins University. My work bridges Bayesian Computation, Statistical Learning, and Data-Driven Optimization, focused on solving real-world problems
+            through the lenses of robust approaches, calibration, and feedback-driven optimization. I am passionate about developing empirical tools that enhance decision-making and improve outcomes across various domains.
           </p>
 
           <p style={{ fontSize: '1.05rem' }}>
             <strong style={{ color: 'var(--color-heading)' }}>Interests:</strong>{' '}
-            Probabilistic Machine Learning, Data-Driven Optimization, Efficient Causal Inference, Scaling Theory for LLMs
+            Probabilistic Machine Learning, Data-Driven Optimization, Efficient Bayesian Computation, Robust Reasoning for LLMs, Intelligent Videogame AI, Automated Preprocessing
           </p>
         </div>
       </div>
@@ -146,9 +146,9 @@ function Home() {
         </h3>
 
         <p style={{ maxWidth: '720px' }}>
-          I built a beta AI assistant with access to my resume, course notes,
+          I built an AI assistant with access to my resume, course notes,
           and research materials. It can answer questions about my academic
-          background, technical interests, projects, and ongoing work.
+          background, technical interests, projects, and ongoing work (Bonus: and some hobbies too!).
         </p>
 
         <div style={{ marginTop: '1rem' }}>
