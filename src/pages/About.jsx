@@ -56,8 +56,8 @@ function About() {
 
       <h2>Education</h2>
       <ul>
-        <li>BS Finance, BA Economics, Minor in Statistics — Rutgers University</li>
-        <li>MSE Applied Mathematics and Statistics — Whiting School of Engineering, Johns Hopkins University</li>
+        <li>B.S. Finance, B.A. Economics, Minor in Statistics — Rutgers University</li>
+        <li>M.S.E. Applied Mathematics and Statistics — Whiting School of Engineering, Johns Hopkins University</li>
       </ul>
 
       <h2>Skills</h2>
