@@ -59,8 +59,8 @@
 
 .tofu-bubble {
   position: absolute;
-  right: calc(100% + 0.85rem);
-  bottom: 14rem;
+  right: calc(100% - 0.75rem);
+  bottom: 11rem;
   z-index: 3;
   width: min(290px, calc(100vw - 2rem));
   margin: 0;
@@ -77,14 +77,15 @@
 .tofu-bubble::after {
   content: '';
   position: absolute;
-  right: -9px;
-  top: 50%;
+  right: 0.5rem;
+  top: auto;
+  bottom: -9px;
   width: 16px;
   height: 16px;
-  border-top: var(--border-thin);
   border-right: var(--border-thin);
+  border-bottom: var(--border-thin);
   background: var(--color-bg-alt);
-  transform: translateY(-50%) rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .tofu-bubble-message {
@@ -247,8 +248,8 @@
   }
 
   .tofu-bubble {
-    right: calc(100% + 0.5rem);
-    bottom: 10rem;
+    right: calc(100% - 0.35rem);
+    bottom: 9rem;
     width: min(250px, calc(100vw - 7.5rem));
   }
 }

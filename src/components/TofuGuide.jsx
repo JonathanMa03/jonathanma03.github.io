@@ -59,15 +59,12 @@ function TofuGuide() {
   };
 
   useEffect(() => {
-    const hasAnswered = window.localStorage.getItem('tofu-tour-prompted');
     playOnce('wave');
+    const promptTimer = window.setTimeout(() => {
+      setBubble('tour-prompt');
+    }, 700);
 
-    if (!hasAnswered) {
-      const promptTimer = window.setTimeout(() => {
-        setBubble('tour-prompt');
-      }, 700);
-      return () => window.clearTimeout(promptTimer);
-    }
+    return () => window.clearTimeout(promptTimer);
   }, []);
 
   useEffect(() => {
@@ -236,7 +233,6 @@ function TofuGuide() {
         className={`tofu-character tofu-character-${animation}`}
         onClick={reactToClick}
         aria-label={animation === 'sleep' ? 'Wake Tofu' : 'Play with Tofu'}
-        title="Play with Tofu"
         style={{
           '--tofu-frames': current.frames,
           '--tofu-steps': current.frames - 1,
