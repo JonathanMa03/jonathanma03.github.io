@@ -26,6 +26,7 @@ function Navbar() {
             <NavLink
               key={item.path}
               to={item.path}
+              data-tofu-tour={item.label.toLowerCase()}
               className={({ isActive }) =>
                 `site-nav-link link-underline ${isActive ? 'active' : ''}`
               }

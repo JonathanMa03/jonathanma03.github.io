@@ -1,0 +1,274 @@
+.tofu-guide {
+  position: fixed;
+  right: clamp(0.75rem, 2.5vw, 2rem);
+  bottom: clamp(0.5rem, 2vw, 1.5rem);
+  z-index: calc(var(--z-nav) + 5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.tofu-character {
+  width: clamp(108px, 12vw, 156px);
+  aspect-ratio: 201 / 374;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+  top: -18px;
+  z-index: 1;
+  filter: drop-shadow(0 12px 12px rgba(2, 12, 27, 0.42));
+  pointer-events: auto;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.tofu-character:hover,
+.tofu-character:focus-visible {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 16px 14px rgba(2, 12, 27, 0.58));
+  outline: none;
+}
+
+.tofu-character:focus-visible {
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.tofu-sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tofu-sprite img {
+  display: block;
+  width: calc(var(--tofu-frames) * 100%);
+  max-width: none;
+  height: 100%;
+  animation: tofu-frames var(--tofu-duration) steps(var(--tofu-steps), end) infinite;
+  image-rendering: pixelated;
+}
+
+.tofu-character-wave .tofu-sprite img,
+.tofu-character-play .tofu-sprite img {
+  animation-iteration-count: 1;
+}
+
+.tofu-bubble {
+  position: absolute;
+  right: calc(100% + 0.85rem);
+  bottom: 14rem;
+  z-index: 3;
+  width: min(290px, calc(100vw - 2rem));
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: var(--border-thin);
+  border-radius: var(--radius-lg);
+  background: rgba(17, 34, 64, 0.97);
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+  transform-origin: right bottom;
+  animation: tofu-bubble-enter 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.tofu-bubble::after {
+  content: '';
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-top: var(--border-thin);
+  border-right: var(--border-thin);
+  background: var(--color-bg-alt);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.tofu-bubble-message {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: var(--fz-sm);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.tofu-bubble-message.is-typing::after {
+  content: '▌';
+  display: inline-block;
+  margin-left: 0.12rem;
+  color: var(--color-accent);
+  animation: tofu-dialogue-cursor 700ms step-end infinite;
+}
+
+.tofu-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tofu-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  animation: tofu-actions-enter 260ms ease-out both;
+}
+
+.tofu-actions button {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+}
+
+.tofu-actions button:hover,
+.tofu-actions button:focus-visible {
+  background: rgba(100, 255, 218, 0.2);
+  outline: none;
+}
+
+.tofu-actions .tofu-action-muted {
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+.tofu-quick-actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  width: clamp(108px, 12vw, 156px);
+  margin-top: -3.4rem;
+  pointer-events: auto;
+}
+
+.tofu-quick-actions button {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(100, 255, 218, 0.32);
+  border-radius: 999px;
+  background: rgba(17, 34, 64, 0.94);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.tofu-quick-actions button:hover,
+.tofu-quick-actions button:focus-visible {
+  border-color: var(--color-accent);
+  background: var(--color-accent-muted);
+  outline: none;
+}
+
+.tofu-quick-actions button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.site-nav-link.tofu-tour-target {
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 7px;
+  animation: tofu-target-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes tofu-frames {
+  to {
+    transform: translateX(var(--tofu-shift));
+  }
+}
+
+@keyframes tofu-target-pulse {
+  50% {
+    outline-color: rgba(100, 255, 218, 0.32);
+  }
+}
+
+@keyframes tofu-bubble-enter {
+  from {
+    opacity: 0;
+    transform: translate(10px, 8px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes tofu-actions-enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tofu-dialogue-cursor {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1081px) {
+  .tofu-guide {
+    right: 5.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .tofu-guide {
+    right: 0.5rem;
+    bottom: 0.35rem;
+  }
+
+  .tofu-character {
+    width: 104px;
+  }
+
+  .tofu-quick-actions {
+    width: 104px;
+  }
+
+  .tofu-bubble {
+    right: calc(100% + 0.5rem);
+    bottom: 10rem;
+    width: min(250px, calc(100vw - 7.5rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tofu-sprite img {
+    animation: none;
+  }
+
+  .tofu-character {
+    transition: none;
+  }
+
+  .site-nav-link.tofu-tour-target {
+    animation: none;
+  }
+
+  .tofu-bubble,
+  .tofu-actions,
+  .tofu-bubble-message.is-typing::after {
+    animation: none;
+  }
+}

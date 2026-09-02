@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import TofuGuide from '../components/TofuGuide';
+
+const PHRASES = ['Agentic Benchmarking', 'Robust Reasoning', 'Medical Imaging', 'Data-Driven Optimization', 'Biomarker Detection', 'Precision Healthcare'];
 
 function Home() {
   const base = import.meta.env.BASE_URL;
@@ -8,13 +11,12 @@ function Home() {
   const CARD_BACK = 'business-card-back.png';
   const CARD_PDF = 'business-card.pdf';
 
-  const phrases = ['Agentic Benchmarking', 'Robust Reasoning', 'Medical Imaging', 'Data-Driven Optimization', 'Biomarker Detection', 'Precision Healthcare'];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentPhrase = phrases[phraseIndex];
+    const currentPhrase = PHRASES[phraseIndex];
     const typingSpeed = isDeleting ? 45 : 90;
     const pauseTime = 1200;
 
@@ -24,7 +26,7 @@ function Home() {
       timeout = setTimeout(() => setIsDeleting(true), pauseTime);
     } else if (isDeleting && displayedText === '') {
       setIsDeleting(false);
-      setPhraseIndex((prev) => (prev + 1) % phrases.length);
+      setPhraseIndex((prev) => (prev + 1) % PHRASES.length);
     } else {
       timeout = setTimeout(() => {
         setDisplayedText((prev) =>
@@ -40,6 +42,7 @@ function Home() {
 
   return (
     <section className="section section-narrow">
+      <div id="home-intro">
       <p className="eyebrow">Hi, my name is</p>
 
       <h1
@@ -77,8 +80,10 @@ function Home() {
         </span>
       .
       </h2>
+      </div>
 
       <div
+        id="home-about"
         style={{
           display: 'grid',
           gridTemplateColumns: 'minmax(0, 1fr)',
@@ -118,6 +123,7 @@ function Home() {
       </div>
 
       <div
+        id="home-assistant"
         className="hover-lift"
         style={{
           marginTop: '3rem',
@@ -163,7 +169,7 @@ function Home() {
         </div>
       </div>
 
-      <div style={{ marginTop: '4rem' }}>
+      <div id="home-card" style={{ marginTop: '4rem' }}>
         <p className="eyebrow">Identity</p>
         <h2 className="section-heading" style={{ marginBottom: '1.25rem' }}>
           Business Card
@@ -269,6 +275,8 @@ function Home() {
           </a>
         </div>
       </div>
+
+      <TofuGuide />
     </section>
   );
 }
