@@ -25,7 +25,23 @@ const TOUR_STEPS = [
   },
   {
     target: '[data-tofu-tour="blog"]',
-    message: 'Click “Blog” for technical notes, research ideas, and things he is learning. That’s the tour!',
+    message: 'Click “Blog” for technical notes, research ideas, and things he is learning.',
+  },
+  {
+    target: '[data-tofu-tour="contact"]',
+    message: 'Click “Contact” when you want to get in touch with Jonathan directly.',
+  },
+  {
+    target: '[data-tofu-tour="vibes"]',
+    message: 'Click “Vibes” to see what Jonathan and I have been listening to lately.',
+  },
+  {
+    target: '[data-tofu-tour="resume"]',
+    message: 'The “Resume/CV” button opens a detailed look at Jonathan’s background and work.',
+  },
+  {
+    target: '[data-tofu-tour="home"]',
+    message: 'Finally, click the “J” anytime to return home. That’s the whole tour!',
   },
 ];
 

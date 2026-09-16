@@ -179,7 +179,9 @@
   cursor: default;
 }
 
-.site-nav-link.tofu-tour-target {
+.site-nav-link.tofu-tour-target,
+.site-logo.tofu-tour-target,
+.site-resume-btn.tofu-tour-target {
   color: var(--color-accent);
   border-radius: var(--radius-sm);
   outline: 2px solid var(--color-accent);
@@ -263,7 +265,9 @@
     transition: none;
   }
 
-  .site-nav-link.tofu-tour-target {
+  .site-nav-link.tofu-tour-target,
+  .site-logo.tofu-tour-target,
+  .site-resume-btn.tofu-tour-target {
     animation: none;
   }
 

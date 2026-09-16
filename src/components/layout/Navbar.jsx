@@ -17,7 +17,7 @@ function Navbar() {
   return (
     <header className={`site-header ${scrolled ? 'site-header-scrolled' : ''}`}>
       <nav className="site-nav">
-        <Link to="/" className="site-logo" aria-label="Home">
+        <Link to="/" className="site-logo" aria-label="Home" data-tofu-tour="home">
           <span className="site-logo-inner">J</span>
         </Link>
 
@@ -38,6 +38,7 @@ function Navbar() {
 
           <NavLink
             to="/resume"
+            data-tofu-tour="resume"
             className={({ isActive }) =>
               `site-resume-btn ${isActive ? 'active' : ''}`
             }

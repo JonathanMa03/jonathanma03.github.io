@@ -4,6 +4,7 @@ const navLinks = [
     { number: '03.', label: 'Experience', path: '/experience' },
     { number: '04.', label: 'Blog', path: '/blog' },
     { number: '05.', label: 'Contact', path: '/contact' },
+    { number: '06.', label: 'Vibes', path: '/vibes' },
   ];
   
   export default navLinks;
