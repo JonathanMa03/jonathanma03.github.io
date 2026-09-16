@@ -1,5 +1,6 @@
 // Rotate a selection by replacing its embedUrl and updating the optional copy.
 // The layout, sizing, and animations are handled by the Vibes page.
+// change only the link, from spotify's src="" to the embedUrl field
 const vibes = {
   currentRotation: {
     label: 'My Current Rotation',
@@ -14,7 +15,7 @@ const vibes = {
     description:
       'One track that probably needs an upper bound for the number of replays.',
     embedUrl:
-      'https://open.spotify.com/embed/track/7mykoq6R3BArsSpNDjFQTm?utm_source=generator',
+      'https://open.spotify.com/embed/track/0ddcSXm5VzpmviExjNj8X5?utm_source=generator&si=cc7658032e6e42bc',
     height: 152,
   },
   featuredArtist: {
