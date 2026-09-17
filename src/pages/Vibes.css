@@ -165,6 +165,18 @@
   background: #121212;
 }
 
+.vibes-spotify-embed-shell {
+  min-height: var(--spotify-embed-height);
+  border-radius: 12px;
+  background: #121212;
+}
+
+.vibes-spotify-embed-shell iframe {
+  display: block;
+  border: 0;
+  border-radius: 12px;
+}
+
 .vibes-tofu {
   position: absolute;
   top: -0.45rem;

@@ -1,18 +1,128 @@
+import { useEffect, useRef, useState } from 'react';
 import vibes from '../data/vibes';
 import './Vibes.css';
 
+const spotifyControllers = new Set();
+let spotifyIframeApiPromise;
+
+function loadSpotifyIframeApi() {
+  if (window.__spotifyIframeApi) {
+    return Promise.resolve(window.__spotifyIframeApi);
+  }
+
+  if (!spotifyIframeApiPromise) {
+    spotifyIframeApiPromise = new Promise((resolve, reject) => {
+      const previousReadyHandler = window.onSpotifyIframeApiReady;
+
+      window.onSpotifyIframeApiReady = (iframeApi) => {
+        window.__spotifyIframeApi = iframeApi;
+        previousReadyHandler?.(iframeApi);
+        resolve(iframeApi);
+      };
+
+      if (!document.querySelector('script[data-spotify-iframe-api]')) {
+        const script = document.createElement('script');
+        script.src = 'https://open.spotify.com/embed/iframe-api/v1';
+        script.async = true;
+        script.dataset.spotifyIframeApi = 'true';
+        script.addEventListener('error', () => {
+          spotifyIframeApiPromise = undefined;
+          reject(new Error('Spotify iframe API failed to load.'));
+        });
+        document.body.appendChild(script);
+      }
+    });
+  }
+
+  return spotifyIframeApiPromise;
+}
+
+function pauseOtherSpotifyPlayers(activeController) {
+  spotifyControllers.forEach((controller) => {
+    if (controller !== activeController) controller.pause();
+  });
+}
+
+function getSpotifyEntityUrl(embedUrl) {
+  const url = new URL(embedUrl);
+  url.pathname = url.pathname.replace('/embed/', '/');
+  return url.toString();
+}
+
 function SpotifyEmbed({ selection, title }) {
+  const embedShell = useRef(null);
+  const [useFallback, setUseFallback] = useState(false);
+
+  useEffect(() => {
+    let controller;
+    let cancelled = false;
+    const shell = embedShell.current;
+    const target = document.createElement('div');
+
+    shell?.replaceChildren(target);
+
+    loadSpotifyIframeApi()
+      .then((iframeApi) => {
+        if (cancelled || !shell?.isConnected) return;
+
+        iframeApi.createController(
+          target,
+          {
+            url: getSpotifyEntityUrl(selection.embedUrl),
+            width: '100%',
+            height: selection.height,
+          },
+          (createdController) => {
+            if (cancelled) {
+              createdController.destroy();
+              return;
+            }
+
+            controller = createdController;
+            spotifyControllers.add(controller);
+            controller.addListener('playback_started', () => {
+              pauseOtherSpotifyPlayers(controller);
+            });
+          }
+        );
+      })
+      .catch(() => {
+        if (!cancelled) setUseFallback(true);
+      });
+
+    return () => {
+      cancelled = true;
+      if (controller) {
+        spotifyControllers.delete(controller);
+        controller.destroy();
+      }
+      shell?.replaceChildren();
+    };
+  }, [selection.embedUrl, selection.height]);
+
+  if (useFallback) {
+    return (
+      <iframe
+        className="vibes-spotify-embed"
+        title={title}
+        src={selection.embedUrl}
+        width="100%"
+        height={selection.height}
+        frameBorder="0"
+        allowFullScreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      />
+    );
+  }
+
   return (
-    <iframe
-      className="vibes-spotify-embed"
-      title={title}
-      src={selection.embedUrl}
-      width="100%"
-      height={selection.height}
-      frameBorder="0"
-      allowFullScreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"
+    <div
+      className="vibes-spotify-embed-shell"
+      style={{ '--spotify-embed-height': `${selection.height}px` }}
+      role="group"
+      aria-label={title}
+      ref={embedShell}
     />
   );
 }
