@@ -1,0 +1,329 @@
+% Use XeLatex
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.8in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{microtype}
+
+\linespread{1.05}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\definecolor{rulegray}{RGB}{130,130,130}
+
+\titleformat{\section}
+  {\normalsize\bfseries}
+  {}{0pt}{}
+
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+\usepackage{enumitem}
+
+% Item Sizes
+\setlist[itemize]{
+  leftmargin=*,
+  topsep=0pt,
+  itemsep=1pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\setlength{\headheight}{14pt}
+
+% Section Heading
+\newcommand{\resheading}[1]{%
+  \Needspace{6\baselineskip}%
+  \section*{#1}\vspace{-4pt}\color{rulegray}\hrule\vspace{4pt}\color{black}
+}
+
+\newcommand{\entry}[4]{%
+  \Needspace{6\baselineskip}%
+  \textbf{#1}\hfill #2\\[-1pt]%
+  #3\hfill #4\\[-8pt]%
+}
+
+\newcommand{\workentry}[4]{%
+  \Needspace{7\baselineskip}%
+  \textbf{#1}\hfill #2\\[-1pt]%
+  #3\hfill #4\\[-8pt]%
+}
+
+\newcommand{\pubentry}[3]{%
+  \Needspace{7\baselineskip}%
+  \textbf{#1}\hfill #2\\[-1pt]%
+  \textit{#3}\\[-8pt]%
+}
+
+\newcommand{\projectentry}[2]{%
+  \Needspace{8\baselineskip}%
+  \textbf{#1}\hfill #2\\[-8pt]%
+}
+
+% tight spacing
+\newenvironment{tightitemize}{%
+  \vspace{-2pt}%
+  \begin{itemize}[leftmargin=*,topsep=0pt,itemsep=1pt,parsep=0pt,partopsep=0pt]
+}{%
+  \end{itemize}\vspace{4pt}
+}
+
+% subsection formatting
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {}{0pt}{}
+
+\usepackage{hyperref}
+\usepackage{needspace}
+
+\begin{document}
+% HEADER
+\begin{center}
+{\Large \textbf{Jonathan Ma}}\\
+801-673-1386 | jonathanma217@outlook.com \\
+\href{https://www.linkedin.com/in/jonathanma217/}{LinkedIn} | \href{https://github.com/JonathanMa03}{GitHub} | \href{https://jonathanma03.github.io/}{Personal Website}
+\end{center}
+
+
+% EDUCATION
+\resheading{Education}
+
+\entry
+{Master of Science in Engineering, Applied Mathematics and Statistics}
+{Aug 2025 -- Dec 2026}
+{Johns Hopkins University}
+{Baltimore, MD}
+\begin{tightitemize}
+\item Master's Thesis: \textit{Calibration-Aware Recurrent Neural Networks for Multivariate Probabilistic Forecasting under Distribution Shift} \href{https://github.com/JonathanMa03/innovative-droBVAR}{(Repository)}
+\end{tightitemize}
+
+\entry
+{Bachelor of Science in Finance, Bachelor of Arts in Economics, Minor in Statistics}
+{Aug 2021 -- May 2025}
+{Rutgers University}
+{Camden, NJ}
+\begin{tightitemize}
+\item Undergraduate Honors Thesis: \textit{Analyzing the Obesity of Children and Adolescents and the Effect of the Pandemic} \href{https://github.com/JonathanMa03/YouthObesity}{(Repository)}
+\item Honors Societies: Omicron Delta Epsilon, Beta Gamma Sigma, Beta Alpha Psi
+\item Honors: Summa Cum Laude, Honors in Economics, Athenaeum Honors Society
+\end{tightitemize}
+
+% RESEARCH EXPERIENCE
+\resheading{Research Experience}
+
+\workentry
+{Affiliate Researcher, Sharon Eccles Steele Center for Translational Medicine}
+{Jun 2026 -- Present}
+{University of Utah}
+{Salt Lake City, UT}
+\begin{tightitemize}
+\item Developed computational pipelines to detect and quantify hypertransmission (``barcoding'') patterns in optical coherence tomography (OCT) images of age-related macular degeneration (AMD), integrating Heidelberg Eye Explorer (HEYEX) segmentations to construct a weighted barcoding index from quantitative imaging features, with feature weights estimated using logistic regression to maximize progression-risk prediction.
+\item Designed and evaluated classical image analysis and deep learning approaches for automated hypertransmission localization, including transfer-learning CNNs (ResNet50), bounding-box detection strategies, and Grad-CAM explainability on over 24,000 retinal OCT images, achieving approximately 93\% held-out classification accuracy after layer-wise fine tuning.
+\item Performed robustness and sensitivity analyses through ROI perturbation, bootstrap validation, and segmentation reliability testing while collaborating with clinicians to develop clinically interpretable biomarkers, manual annotation software, and HIPAA-compliant workflows for secure imaging analysis and progression-risk modeling.
+\end{tightitemize}
+
+\workentry
+{Research Assistant, Dr. Tengfei Zhang (Finance)}
+{Oct 2023 -- Jul 2025}
+{Rutgers University}
+{}
+\begin{tightitemize}
+\item Developed an end-to-end financial text analytics pipeline by collecting and preprocessing over 7,500 earnings call and conference transcripts from Capital IQ using Python and R, producing a structured corpus for downstream sentiment and disclosure analysis.
+\item Developed a FinBERT-assisted sentiment analysis workflow incorporating structured prompt engineering and manual quality assurance to improve consistency and reliability of firm-level financial sentiment annotations across thousands of financial documents.
+\item Constructed and validated a database of over 23,500 equity analysts by integrating Capital IQ records with publicly available professional biographies, institutional webpages, and CVs. Developed a Selenium/ChromeDriver entity-resolution pipeline that automatically investigated ambiguous analyst identities (e.g., abbreviated or alternate names), reducing 3,750 potential duplicate or uncertain matches to approximately 1,800 candidates requiring manual review.
+\item Performed manual verification of the remaining candidate matches, reducing the unresolved analyst count from 3,750 to just 54 records while substantially improving dataset completeness and entity-level matching accuracy for downstream empirical analyses.
+\end{tightitemize}
+
+\workentry
+{Research Assistant, Dr. Tetsuji Yamada (Health Economics)}
+{Jan 2023 -- Dec 2025}
+{Rutgers University}
+{}
+\begin{tightitemize}
+\item Conducted a systematic review of more than 60 peer-reviewed studies to identify clinically relevant health economics measures, including quality-adjusted life years (QALYs), healthcare utilization metrics, and socioeconomic determinants, informing model specification for adolescent health behavior research.
+\item Developed generalized linear mixed models (GLMMs) with interaction effects to quantify associations between behavioral, demographic, and socioeconomic risk factors using Youth Risk Behavior Survey (YRBS) data, evaluating nested models through likelihood ratio tests, information criteria, and diagnostic analyses.
+\item Designed structural equation modeling (SEM) frameworks to investigate direct and indirect pathways underlying adolescent health outcomes, integrating latent behavioral constructs with observed demographic and socioeconomic variables to support causal hypothesis generation.
+\item Benchmarked economics course offerings across peer universities and conducted a qualitative review with current economics students, then synthesized the findings into recommendations for curriculum development and student outreach aimed at increasing program enrollment.
+\end{tightitemize}
+
+\workentry
+{Research Assistant, Dr. Emara Noha (Labor Economics)}
+{Jan 2023 -- May 2023}
+{Rutgers University}
+{}
+\begin{tightitemize}
+\item Conducted a comprehensive review of the telecommunications and economic development literature to identify appropriate causal identification strategies, variable specifications, and empirical growth models, synthesizing findings to support the development of a research manuscript and conference presentation examining telecommunications infrastructure in Egypt.
+\item Implemented difference-in-differences (DiD) models in STATA to estimate the causal effects of telecommunications expansion on regional economic outcomes before and after major infrastructure investments, evaluating multiple treatment definitions, model specifications, and robustness checks based on methodologies reported in the applied econometrics literature.
+\item Developed instrumental variable (IV) estimation frameworks to address potential endogeneity between telecommunications investment and economic growth, assessing instrument validity through first-stage relevance tests, weak instrument diagnostics, overidentification tests, and specification comparisons to ensure reliable causal inference.
+\item Estimated the contribution of telecommunications infrastructure to long-run economic development using an augmented Solow growth model, systematically comparing alternative functional forms, interaction structures, and model specifications while interpreting their implications for productivity growth, labor market outcomes, and regional economic performance.
+\end{tightitemize}
+
+%====================
+% PUBLICATIONS
+%====================
+
+\resheading{Publications}
+
+\pubentry
+{Bayesian Hierarchical Modeling and Clustering for Malignant Cancer Diagnosis \href{https://doi.org/10.59543/w22sya71}{(DOI)}}
+{2026}
+{Sijia Zhu, \textbf{Jonathan Ma}, and Zhe Liu. \textit{Argumentation Based Systems Journal}, 2, 96--110.}
+
+\pubentry
+{Analyzing the Obesity of Children and Adolescents and the Effect of the Pandemic}
+{Submitted}
+{Undergraduate honors thesis manuscript submitted for publication.}
+
+\pubentry
+{CA-RNN: Multivariate Probabilistic Forecasting under Distribution Shift \href{https://github.com/JonathanMa03/innovative-droBVAR}{(Repository)}}
+{Upcoming}
+{Master's thesis, Johns Hopkins University.}
+
+%====================
+% TEACHING & ACADEMIC EXPERIENCE
+%====================
+
+\resheading{Teaching \& Academic Experience}
+
+\workentry
+{Teaching Assistant, Introduction to Data Science}
+{Aug 2026 -- Dec 2026}
+{Johns Hopkins University}
+{}
+\begin{tightitemize}
+\item Coordinated and proctored biweekly paper quizzes with four other teaching assistants for a class of 240 students, delegating grading and scanning responsibilities and instructing the teaching team on printer and scanner workflows.
+\item Provided timely feedback through the learning management system by developing a technical setup guide, launching a dedicated Q\&A thread, and systematically logging student concerns for instructional follow-up.
+\item Developed Quizzr, a Context-Augmented Generation system that produces course-aligned quizzes, answer keys, and audits to support assessment development and quality assurance.
+\item Delivered a guest lecture on Gaussian Mixture Models to the full class, explaining the underlying intuition, probabilistic formulation, and applications of mixture-based clustering.
+\end{tightitemize}
+
+\workentry
+{Teaching Assistant, Bayesian Statistics for Physical Sciences}
+{Jan 2026 -- May 2026}
+{Johns Hopkins University}
+{}
+\begin{tightitemize}
+\item Designed, graded, and refined assignments covering Bayesian inference, probabilistic modeling, and decision theory, developing detailed solution keys and constructive feedback strategies to promote rigorous proof writing while improving grading consistency and fairness.
+\item Collaborated with the course instructor to design Bayesian exercises grounded in applications from the physical sciences, including particle detector experiments, astrophysics, and cosmology, helping connect statistical inference with realistic scientific problems.
+\item Produced lecture notes and Mathematica demonstrations of Bayesian computation, Approximate Bayesian Computation (ABC), and Markov chain Monte Carlo (MCMC), visualizing sampling algorithms and reinforcing computational concepts.
+\end{tightitemize}
+
+\workentry
+{Teaching Assistant, Machine Learning Applications in Business}
+{Aug 2024 -- Dec 2024}
+{Rutgers University}
+{}
+\begin{tightitemize}
+\item Supported instruction for two course sections totaling 74 students by designing and grading programming assignments covering supervised learning algorithms, predictive modeling, and model evaluation.
+\item Introduced GitHub Classroom workflows to automate coding assignment distribution and grading, demonstrating GitHub Classroom and Canvas integration to the course instructor to streamline assignment management and feedback.
+\item Established a student ``DIY'' technical support desk to troubleshoot GitHub, Anaconda, Zoom, and development environment issues, while manually editing Zoom lecture transcripts with timestamps, references, and formatting to improve accessibility and post-class review.
+\item Held weekly office hours providing individualized assistance with programming assignments, debugging, and machine learning concepts, while curating recent industry case studies and writing Canvas discussion posts highlighting real-world applications of machine learning in business analytics.
+\end{tightitemize}
+
+\workentry
+{Statistics \& Calculus Tutor}
+{Jan 2022 -- May 2025}
+{Rutgers University}
+{}
+\begin{tightitemize}
+\item Delivered more than 150 tutoring sessions in statistics and calculus, translating mathematical concepts into accessible explanations while emphasizing their practical importance through discipline-specific examples in fields such as marketing, nursing, finance, economics, and the natural sciences.
+\item Designed and led supplemental instruction sessions focused on conceptual understanding, problem-solving strategies, and exam preparation, contributing to an approximately 15\% increase in average exam scores among participating students.
+\item Mentored students on coursework, quantitative reasoning, and academic planning by adapting explanations to diverse learning styles and demonstrating how statistical and mathematical methods apply to real-world decision making across multiple disciplines.
+\end{tightitemize}
+
+\workentry
+{Co-Founder \& Secretary, Student Finance Association}
+{Oct 2022 -- May 2025}
+{Rutgers University}
+{}
+\begin{tightitemize}
+\item Advised organizational strategy and coordinated the planning and execution of more than 20 professional development, networking, and educational events, contributing to approximately 400\% membership growth while mentoring new executive board members on event planning, leadership, and effective decision making under pressure.
+\item Maintained comprehensive organizational records, executive board schedules, meeting logs, and operational documentation while developing and continuously updating the organization's internal handbook (``The Big Book of SFA'') to support leadership continuity, knowledge transfer, and long-term organizational sustainability.
+\item Designed and executed targeted outreach campaigns, optimizing recruitment materials, campus advertising, and communication strategies to maximize student engagement and strengthen relationships with faculty, alumni, and industry partners.
+\end{tightitemize}
+
+%====================
+% PROJECTS
+%====================
+
+\resheading{Projects}
+
+\projectentry
+{Research Topic Lineages (Dynamic Topic Modeling and Diffusion)}
+{\href{https://github.com/JonathanMa03/diffusion-topic-evaluation}{GitHub}}
+\begin{tightitemize}
+\item Developed an end-to-end pipeline for modeling the temporal evolution of biomedical research topics using PubMed data, including automated ingestion, preprocessing, transformer embeddings, metadata management, and SQLite storage.
+\item Applied HDBSCAN within individual time periods and designed a temporal alignment framework linking related clusters into topic lineages, enabling measurement of topic persistence, emergence, disappearance, and structural change.
+\item Quantified semantic drift through PCA trajectories, cosine similarity, and movement norms to distinguish persistent research programs from changing topic representations over time.
+\item Implemented a PyTorch diffusion model for stochastic topic-trajectory forecasting and built Plotly and Matplotlib workflows for lineage structure, movement distributions, and reduced-dimensional temporal evolution.
+\end{tightitemize}
+
+\projectentry
+{CA-RNN (Master's Thesis)}
+{\href{https://github.com/JonathanMa03/innovative-droBVAR}{GitHub}}
+\begin{tightitemize}
+\item Developed the Calibration-Aware Recurrent Neural Network (CA-RNN), a multivariate probabilistic forecasting model that augments joint negative log likelihood with differentiable projected-PIT and temporal PIT-moment penalties to target distributional and sequential calibration during training.
+\item Derived frequentist and variational Bayesian formulations with full-covariance Gaussian predictive heads, then established theoretical limits by proving finite-criterion non-identification, constructing dependent uniform PITs with zero covariance, and relating proper-score regret to quantities outside the calibration loss.
+\item Evaluated RNN, BRNN, CA-RNN, and CA-BRNN across controlled data-generating processes, market regimes, distribution shifts, ablations, and a disjoint external asset panel against historical, VAR, and VAR--GARCH probabilistic benchmarks.
+\item Packaged the model as an installable PyTorch library with modular data, training, prediction, baseline, and evaluation interfaces supporting configurable CPU/GPU execution and reproducible application to new multivariate time-series panels.
+\item Engineered leakage-safe chronological splits, deterministic training/projection/forecast seeds, matched initializations, validation checkpointing, epoch-level loss logging, resumable artifacts, and automated unit tests.
+\item Established a frozen confirmatory protocol with SHA-256 verification, prespecified multi-seed moving-block bootstrap inference, structured CSV/NPZ exports, documented notebooks, and transparent reporting of negative findings and numerical failures.
+\end{tightitemize}
+
+\projectentry
+{Modern AutoCriteria (Clinical-Trial Eligibility Extraction)}
+{May 2026 -- Present}
+\begin{tightitemize}
+\item Refactored the clinical eligibility platform from LangChain to modular OpenAI SDK components, adding structured logging, token monitoring, adaptive multi-model prompting, and automatic rate-limit retries.
+\item Developed terminology normalization and semantic preprocessing pipelines integrating ICD-10 and RxNorm vocabularies with regular-expression normalization, abbreviation expansion, and similarity-based matching for downstream meta-analysis and evidence synthesis.
+\item Built a clinically aware distance metric combining human judgments with LLM-as-a-Judge evaluation to separate lexically similar but clinically contradictory criteria, such as ``age $>60$'' and ``age $<60$,'' during semantic grouping and deduplication.
+\item Designed an independent validation agent that audits extracted criteria against original ClinicalTrials.gov XML records, identifying omissions, inconsistencies, and hallucinated entities while improving extraction to 91.8\% Exact Match and 0.96 F1.
+\item Expanded the platform with a dynamic terminology dictionary, automated model-integration tests, structured exports, and command-line and Tkinter interfaces to strengthen reproducibility, usability, and clinical deployment readiness.
+\end{tightitemize}
+
+\projectentry
+{DiffInEye (Diffusion-Based OCT Inpainting)}
+{\href{https://github.com/JonathanMa03/diff-in-eye}{GitHub}}
+\begin{tightitemize}
+\item Formulated retinal OCT inpainting as a conditional inverse problem and developed a reproducible framework spanning deterministic preprocessing, controlled synthetic corruption, classical baselines, diffusion training, and quantitative evaluation.
+\item Implemented and benchmarked zero-fill, Gaussian smoothing, PDE-based diffusion, and Telea fast-marching inpainting against conditional encoder--decoder and U-Net denoising diffusion models.
+\item Built deterministic preprocessing, checkpointing, experiment metadata, diffusion-schedule validation, masked-region losses, and automated architecture benchmarks to support reproducible numerical evaluation.
+\item Evaluated MSE, MAE, PSNR, retinal-layer continuity, and anatomical plausibility, finding that optimization convergence did not guarantee faithful reconstruction and that Telea inpainting substantially outperformed both conditional diffusion architectures.
+\end{tightitemize}
+
+
+% SKILLS
+\resheading{Technical Skills}
+
+\textbf{Languages:} Python, R, SQL, Julia, JavaScript, MATLAB \\
+\textbf{Machine Learning \& Scientific Computing:}\\
+PyTorch, scikit-learn, scikit-fda, CVXPY, Pyro, sentence-transformers, OpenCV, Selenium, LangGraph/LangChain \\
+\textbf{Statistical Methods:} Bayesian inference and computation, causal inference, generalized linear mixed models, structural equation modeling, functional PCA, diffusion models, reinforcement learning, image analysis \\
+\textbf{Research Engineering:} Git, pytest, Ruff, reproducible Python packaging, AI agent skilling, experiment logging, LaTeX, PostgreSQL \\
+\textbf{Domain Tools:} ImageJ, Heidelberg Eye Explorer (HEYEX), Stata, SAS, Tableau, Bloomberg Terminal
+
+% CERTIFICATIONS
+\resheading{Certifications}
+
+CITI Good Clinical Practice (2026) \\
+CITI Biomedical Research with Human Subjects (2026) \\
+CFI Financial Modeling and Valuation Analyst (2024) \\
+Bloomberg Market Concepts (2022) \\
+Google Data Analytics (2023) \\
+Columbia+ Machine Learning 1 (2025) 
+
+% RESEARCH INTERESTS
+\resheading{Research Interests}
+
+Robust and Reliable AI, Agentic Systems and LLM Reasoning, Bayesian Inference and Uncertainty Quantification, Probabilistic Forecasting and Calibration, Stochastic Generative Modeling, Reinforcement Learning and Sequential Decision-Making, Medical Image Analysis, Computational Biostatistics, Causal Inference
+
+\end{document}
+
+% cd public
+% latexmk -xelatex website_cv.tex

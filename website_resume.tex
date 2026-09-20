@@ -1,0 +1,157 @@
+% Use XeLatex
+\documentclass[10pt]{article}
+
+\usepackage[top=0.6in,bottom=0.6in,left=0.65in,right=0.65in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{microtype}
+
+\linespread{1.0}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\definecolor{rulegray}{RGB}{130,130,130}
+
+\titleformat{\section}
+  {\normalsize\bfseries\scshape}
+  {}{0pt}{}
+
+\titlespacing*{\section}{0pt}{5pt}{3pt}
+
+\usepackage{enumitem}
+
+% Item Sizes
+\setlist[itemize]{
+  leftmargin=*,
+  topsep=0pt,
+  itemsep=1pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagenumbering{gobble}
+
+% Section Heading
+\newcommand{\resheading}[1]{%
+  \section*{#1}\vspace{-4pt}\color{rulegray}\hrule\vspace{4pt}\color{black}
+}
+
+% Misc Entries
+\newcommand{\entry}[4]{%
+  \textbf{#1}\hfill #2\\[-1pt]%
+  #3\hfill #4\\[-3pt]%
+}
+
+% Work and Experience Entries
+% change -8 to size
+\newcommand{\workentry}[4]{%
+  \textbf{#1}\hfill #2\\[-1pt]%
+  #3\hfill #4\\[-5pt]%
+}
+
+% Publications
+\newcommand{\pubentry}[3]{%
+  \textbf{#1}\hfill #2\\[-1pt]%
+  \textit{#3}\\[-6pt]%
+}
+
+\newcommand{\projentry}[1]{%
+  \textbf{#1}\\[-7pt]
+}
+
+% tight spacing
+\newenvironment{tightitemize}{%
+  \begin{itemize}[topsep=0pt,itemsep=1pt,parsep=0pt,partopsep=0pt]
+}{%
+  \end{itemize}
+}
+
+\usepackage{hyperref}
+
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Jonathan Ma}}\\[-2pt]
+Salt Lake City, UT \;|\; (801) 673-1386 \;|\; \href{mailto:jonathanma217@outlook.com}{jonathanma217@outlook.com}\\[-1pt]
+\href{https://www.linkedin.com/in/jonathanma217/}{LinkedIn} \;|\;
+\href{https://github.com/JonathanMa03}{GitHub} \;|\;
+\href{https://jonathanma03.github.io/}{Portfolio}
+\end{center}
+\vspace{-2pt}
+
+% Education
+\resheading{EDUCATION}
+
+\entry{Johns Hopkins University}{Baltimore, MD}{Master of Science in Engineering, Applied Mathematics and Statistics}{Expected Dec 2026}
+Thesis: \textit{Calibration-Aware Recurrent Neural Networks for Multivariate Probabilistic Forecasting under Distribution Shift}
+
+\vspace{1pt}
+
+\entry{Rutgers University}{Camden, NJ}{Bachelor of Science in Finance; Bachelor of Arts in Economics; Minor in Statistics}{May 2025}
+Honors: Summa Cum Laude, Honors in Economics
+
+% Experience
+\resheading{RESEARCH \& ANALYTICS EXPERIENCE}
+
+\workentry{University of Utah, Sharon Eccles Steele Center for Translational Medicine}{Salt Lake City, UT}{Affiliate Researcher}{Jun 2026 -- Present}
+\begin{itemize}
+\item Built computational pipelines to quantify retinal OCT biomarkers by integrating HEYEX segmentations, engineered imaging features, and logistic regression-based weighting for progression-risk modeling.
+\item Evaluated classical image analysis and ResNet50 transfer-learning approaches on 24,000+ OCT images, achieving approximately 93\% held-out classification accuracy and using Grad-CAM to assess model behavior.
+\item Performed bootstrap validation, ROI perturbation, and segmentation sensitivity analyses while collaborating with clinicians and biostatisticians on interpretable, HIPAA-compliant workflows.
+\end{itemize}
+
+\vspace{1pt}
+
+\workentry{Rutgers University, Economics Research}{Camden, NJ}{Research Assistant}{Jan 2023 -- Dec 2025}
+\begin{itemize}
+\item Built a Python and R pipeline to collect, preprocess, and quality-check 7,500+ earnings-call and conference transcripts for financial NLP and disclosure analysis.
+\item Developed a FinBERT-assisted sentiment workflow with structured prompting and manual quality assurance to improve consistency across thousands of financial documents.
+\item Constructed a database of 23,500+ equity analysts and developed a Selenium-assisted entity-resolution pipeline that reduced 3,750 ambiguous records to 54 unresolved cases.
+\item Developed generalized linear mixed models and structural equation models using Youth Risk Behavior Survey data to evaluate behavioral, demographic, and socioeconomic determinants of adolescent health outcomes.
+\item Benchmarked economics curricula at peer universities and synthesized a qualitative review with current students into recommendations for curriculum development, outreach, and program enrollment.
+\end{itemize}
+
+% Projects
+\resheading{SELECTED PROJECTS \& PUBLICATIONS}
+
+\projentry{CA-RNN: Calibration-Aware Probabilistic Forecasting \href{https://github.com/JonathanMa03/innovative-droBVAR}{(GitHub)}}
+\begin{tightitemize}
+\item Developed and evaluated recurrent and Bayesian recurrent models with full-covariance predictive distributions and differentiable calibration penalties across simulated, market, and distribution-shift settings.
+\item Packaged the model as a reproducible PyTorch library with deterministic training, leakage-safe splits, structured experiment logs, validation checkpointing, automated tests, and documented evaluation artifacts.
+\end{tightitemize}
+
+\vspace{2pt}
+
+\projentry{Modern AutoCriteria: Clinical-Trial Eligibility Extraction \href{https://github.com/JonathanMa03/modern-autocrit}{(GitHub)}}
+\begin{tightitemize}
+\item Built modular LLM extraction and validation workflows with clinical terminology normalization, structured logging, token monitoring, automated retries, and model-integration tests, achieving 91.8\% Exact Match and 0.96 F1.
+\item Developed a clinically aware distance metric combining human judgment with LLM-as-a-Judge evaluation to distinguish lexically similar but contradictory eligibility criteria.
+\end{tightitemize}
+
+\vspace{2pt}
+\textbf{Peer-Reviewed Publication:} Zhu, S., \textbf{Ma, J.}, and Liu, Z. (2026). ``Bayesian Hierarchical Modeling and Clustering for Malignant Cancer Diagnosis.'' \textit{Argumentation Based Systems Journal}. \href{https://doi.org/10.59543/w22sya71}{(DOI)}
+
+% =======================
+% SKILLS
+% =======================
+\resheading{TECHNICAL SKILLS}
+
+\textbf{Python:} PyTorch, scikit-learn, scikit-fda, CVXPY, PyMC, pandas, NumPy, sentence-transformers, OpenCV, Selenium, bs4 \\
+\textbf{R:} tidyverse, dplyr, ggplot2, CARET, lavaan, brms, bvar, TSA, BART, sqldf \\
+\textbf{Additional Languages:} SQL, Julia, JavaScript, MATLAB
+
+% =======================
+% CERTIFICATIONS
+% =======================
+\resheading{CERTIFICATIONS}
+
+Bloomberg Market Concepts \hfill 2022\\
+CFI Financial Modeling \& Valuation Analyst (FMVA) \hfill 2024\\
+CITI Good Clinical Practice \hfill 2026
+\end{document}
+
+% cd public
+% latexmk -xelatex website_resume.tex
