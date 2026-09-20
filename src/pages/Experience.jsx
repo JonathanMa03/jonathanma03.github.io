@@ -171,7 +171,23 @@ function Experience() {
 
                 <ul style={{ marginBottom: 0 }}>
                   {item.bullets.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex}>{bullet}</li>
+                    <li key={bulletIndex}>
+                      {typeof bullet === "string" ? (
+                        bullet
+                      ) : (
+                        <>
+                          {bullet.prefix}
+                          <a
+                            href={bullet.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {bullet.linkLabel}
+                          </a>
+                          {bullet.suffix}
+                        </>
+                      )}
+                    </li>
                   ))}
                 </ul>
               </motion.article>

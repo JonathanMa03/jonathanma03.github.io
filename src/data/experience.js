@@ -13,6 +13,25 @@ const experience = [
   },
 
   {
+    role: "Teaching Assistant, Introduction to Data Science",
+    organization: "Johns Hopkins University",
+    period: "Aug 2026 — Dec 2026",
+    tags: ["Leadership", "Academic"],
+    bullets: [
+      "Coordinated and proctored biweekly paper quizzes with four other teaching assistants for 240 students, delegating grading and scanning responsibilities and documenting printer and scanner workflows for the teaching team.",
+      "Supported students through the learning management system by publishing a technical setup guide, starting a dedicated Q&A thread, and logging concerns for timely instructional follow-up.",
+      {
+        prefix: "Developed ",
+        linkLabel: "Quizzr",
+        href: "https://github.com/JonathanMa03/quizzer",
+        suffix:
+          ", a context-augmented generation system that produces course-aligned quizzes, answer keys, and audits for assessment development and quality assurance.",
+      },
+      "Delivered a guest lecture on Gaussian Mixture Models to the full class, covering their probabilistic formulation, intuition, and use in model-based clustering."
+    ]
+  },
+
+  {
     role: "Research Assistant (Finance)",
     organization: "Rutgers University",
     period: "Oct 2023 — Jul 2025",
