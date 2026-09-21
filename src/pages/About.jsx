@@ -62,21 +62,17 @@ function About() {
 
       <h2>Skills</h2>
       <ul>
-        <li><strong>Programming:</strong> Python, R, Julia, MATLAB, SQL, Mathematica, Fortran, STATA</li>
-        <li><strong>Data Analysis & Visualization:</strong> pandas, dplyr, ggplot2, seaborn, matplotlib, NumPy, Tableau</li>
-        <li><strong>Statistical & Quantitative Methods:</strong> Multivariate Time Series Analysis, Bayesian Computation, Monte Carlo Simulation, Stochastic Controls</li>
+        <li><strong>Programming:</strong> Python, R, Julia, MATLAB, SQL, Mathematica, Fortran, Stata</li>
+        <li><strong>Data Analysis & Visualization:</strong> pandas, dplyr, ggplot2, seaborn, dash, marimo, matplotlib, NumPy, Tableau</li>
+        <li><strong>Statistical & Quantitative Methods:</strong> Time Series Analysis, High Dimensional Regression, Monte Carlo Simulation, Causal Inference, Survival Analysis</li>
         <li><strong>Tools & Platforms:</strong> Microsoft Office Suite, Git, Jupyter, VS Code, Bloomberg Terminal, S&amp;P Capital IQ</li>
-        <li><strong>R Libraries:</strong> e1071, dplyr, tidyverse, CARET, gptstudio, lavaan, ggplot2, brms, bvar, TSA</li>
-        <li><strong>Python Libraries:</strong> sklearn, scipy, pandas, sqlite3, tensorflow, plotly, dash, bs4, selenium, neuralforecast</li>
+        <li><strong>R Libraries:</strong> e1071, dplyr, tidyverse, CARET, gptstudio, lavaan, ggplot2, brms, bvar, BART</li>
+        <li><strong>Python Libraries:</strong> scikit-fda, scipy, pandas, sqlite3, tensorflow, pytorch, langchain, bs4, selenium, langgraph</li>
       </ul>
 
       <h2>Career Goals & Interests</h2>
       <p>
-        I aim to work at the intersection of healthcare data science, operations research,
-        and Bayesian econometrics. My background spans both business and technical domains,
-        and I’m passionate about using math, modeling, and analytics to improve real-world
-        decision-making. Whether it’s supply chain optimization or public surveillance modeling,
-        I enjoy building strategies that are scalable, fair and practical.
+       I work at the intersection of applied mathematics, statistics, and machine learning, with an interest in bridging quantitative theory and practical application. My background spans economics, finance, biomedical research, and AI, and I enjoy tackling problems where the right methodology is not obvious from the outset. I’m particularly interested in using statistical modeling, optimization, and emerging AI methods to build tools that improve how people learn, conduct research, and make decisions.
       </p>
 
       <div style={{ marginTop: "3rem" }}>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import TofuGuide from '../components/TofuGuide';
 
-const PHRASES = ['Agentic Benchmarking', 'Robust Reasoning', 'Medical Imaging', 'Data-Driven Optimization', 'Biomarker Detection', 'Precision Healthcare'];
+const PHRASES = ['Agentic Benchmarking', 'Robust Reasoning', 'Computer Vision', 'Data-Driven Optimization', 'Translational Research', 'Sentiment Nowcasting'];
 
 function Home() {
   const base = import.meta.env.BASE_URL;
@@ -109,15 +109,12 @@ function Home() {
 
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
           <p style={{ fontSize: '1.05rem' }}>
-            I’m a Financial Econometrics graduate with strong interests in
-            Applied Mathematics/Statistics, currently pursuing a Master’s in Engineering at
-            Johns Hopkins University. My work bridges Bayesian Computation, Statistical Learning, and Data-Driven Optimization, focused on solving real-world problems
-            through the lenses of robust approaches, calibration, and feedback-driven optimization. I am passionate about developing empirical tools that enhance decision-making and improve outcomes across various domains.
+            I bridge quantitative theory and practical application, using statistics, mathematical optimization, and computational methods to solve interdisciplinary problems. I am particularly interested in problems where the correct methodology is not obvious, and in how emerging AI methods can complement rigorous statistical and mathematical approaches.
           </p>
 
           <p style={{ fontSize: '1.05rem' }}>
             <strong style={{ color: 'var(--color-heading)' }}>Interests:</strong>{' '}
-            Probabilistic Machine Learning, Data-Driven Optimization, Efficient Bayesian Computation, Robust Reasoning for LLMs, Intelligent Videogame AI, Automated Preprocessing
+            Probabilistic Machine Learning, Data-Driven Optimization, Efficient Statistical Computation, Robust Reasoning for LLMs, Intelligent Videogame AI, Automated Data Preparation
           </p>
         </div>
       </div>
