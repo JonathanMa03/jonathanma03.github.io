@@ -1,53 +1,26 @@
-import { useState } from "react";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
+import { FiDownload, FiExternalLink } from "react-icons/fi";
+import { motion } from "framer-motion";
+import certifications from "../data/certifications";
+import "./About.css";
 
 function About() {
   const base = import.meta.env.BASE_URL;
+  const certificationGroups = certifications.reduce((groups, certification) => {
+    const existingGroup = groups.find(
+      (group) => group.topic === certification.topic,
+    );
 
-  const certifications = [
-    { label: "Bloomberg Market Concepts", file: "cert-bloomberg-1.pdf" },
-    { label: "Google Data Analytics", file: "cert-google-data.pdf" },
-    { label: "DataCamp Intermediate R", file: "cert-datacamp-intermediate.pdf" },
-    { label: "DataCamp dplyr", file: "cert-datacamp-dplyr.pdf" },
-    { label: "DataCamp ggplot2", file: "cert-datacamp-ggplot2.pdf" },
-    { label: "CFI FMVA", file: "cert-fmva.pdf" },
-    { label: "Columbia Machine Learning", file: "cert-columbia-ml.pdf" },
-  ];
+    if (existingGroup) {
+      existingGroup.certifications.push(certification);
+    } else {
+      groups.push({
+        topic: certification.topic,
+        certifications: [certification],
+      });
+    }
 
-  const [[index, direction], setIndex] = useState([0, 0]);
-
-  const prev = () =>
-    setIndex(([i]) => [
-      i === 0 ? certifications.length - 1 : i - 1,
-      -1,
-    ]);
-
-  const next = () =>
-    setIndex(([i]) => [
-      i === certifications.length - 1 ? 0 : i + 1,
-      1,
-    ]);
-
-  const current = certifications[index];
-
-  const variants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 60 : -60,
-      opacity: 0,
-      scale: 0.98,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: (direction) => ({
-      x: direction > 0 ? -60 : 60,
-      opacity: 0,
-      scale: 0.98,
-    }),
-  };
+    return groups;
+  }, []);
 
   return (
     <section className="section section-narrow">
@@ -62,150 +35,72 @@ function About() {
 
       <h2>Skills</h2>
       <ul>
-        <li><strong>Programming:</strong> Python, R, Julia, MATLAB, SQL, Mathematica, Fortran, Stata</li>
-        <li><strong>Data Analysis & Visualization:</strong> pandas, dplyr, ggplot2, seaborn, dash, marimo, matplotlib, NumPy, Tableau</li>
-        <li><strong>Statistical & Quantitative Methods:</strong> Time Series Analysis, High Dimensional Regression, Monte Carlo Simulation, Causal Inference, Survival Analysis</li>
-        <li><strong>Tools & Platforms:</strong> Microsoft Office Suite, Git, Jupyter, VS Code, Bloomberg Terminal, S&amp;P Capital IQ</li>
-        <li><strong>R Libraries:</strong> e1071, dplyr, tidyverse, CARET, gptstudio, lavaan, ggplot2, brms, bvar, BART</li>
-        <li><strong>Python Libraries:</strong> scikit-fda, scipy, pandas, sqlite3, tensorflow, pytorch, langchain, bs4, selenium, langgraph</li>
+        <li><strong>Programming:</strong> Python, R, SQL, Julia, JavaScript, MATLAB, Mathematica, Stata, SAS</li>
+        <li><strong>Data Analysis & Visualization:</strong> Pandas, NumPy, SciPy, dplyr, ggplot2, Matplotlib, Plotly, Dash, Tableau, Polars, Marimo</li>
+        <li><strong>Statistical & Quantitative Methods:</strong> Bayesian Computation, Causal Inference, Time Series Analysis, Probabilistic Forecasting, Nonparametric Statistics, RLVR, RLHF, MCMC Simulation</li>
+        <li><strong>Tools & Platforms:</strong> GitHub, Jupyter, VS Code, Docker, PostgreSQL, Supabase, Vercel, Railway, Bloomberg Terminal, S&amp;P Capital IQ, Netlify</li>
+        <li><strong>R Libraries:</strong> tidyverse, dplyr, ggplot2, lavaan, brms, caret, BART, bvar, ggdag, text2vec</li>
+        <li><strong>Python Libraries:</strong> PyTorch, scikit-learn, scikit-fda, pandas, NumPy, SciPy, OpenCV, CVXPY, Pyro, sentence-transformers, Selenium, LangChain, LangGraph</li>
       </ul>
 
       <h2>Career Goals & Interests</h2>
       <p>
-       I work at the intersection of applied mathematics, statistics, and machine learning, with an interest in bridging quantitative theory and practical application. My background spans economics, finance, biomedical research, and AI, and I enjoy tackling problems where the right methodology is not obvious from the outset. I’m particularly interested in using statistical modeling, optimization, and emerging AI methods to build tools that improve how people learn, conduct research, and make decisions.
+       I work at the intersection of applied mathematics, statistics, optimization, and machine learning, with the goal of bridging quantitative theory and practical application. My interests center on developing reliable learning and decision-making systems that operate under uncertainty, misspecification, and distribution shift. Drawing on work across economics, finance, biomedical research, and AI, I am especially interested in problems where the appropriate methodology is not obvious and where statistical reasoning can complement emerging AI methods. Long term, I hope to develop rigorous, interpretable, and computationally practical methods that improve scientific discovery, forecasting, human-AI collaboration, and data-driven decision-making.
       </p>
 
-      <div style={{ marginTop: "3rem" }}>
+      <div className="certifications-section">
         <h2>Certifications</h2>
+        <p className="certifications-intro">
+          Selected training across data science, finance, and healthcare research.
+        </p>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-            marginTop: "1.5rem",
-          }}
-        >
-          <button
-            onClick={prev}
-            aria-label="Previous certification"
-            style={{
-              border: "var(--border-thin)",
-              background: "transparent",
-              color: "var(--color-accent)",
-              padding: "0.5rem",
-              borderRadius: "50%",
-              cursor: "pointer",
-              transition: "transform 0.2s ease, background 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateX(-2px) scale(1.05)";
-              e.currentTarget.style.background = "var(--color-accent-muted)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateX(0) scale(1)";
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
-            <FiChevronLeft size={22} />
-          </button>
-
-          <div
-            style={{
-              width: "420px",
-              maxWidth: "92vw",
-              minHeight: "390px",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={current.file}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="hover-lift"
-                style={{
-                  width: "100%",
-                  border: "1px solid rgba(255,255,255,0.14)",
-                  borderRadius: "14px",
-                  padding: "1rem",
-                  background: "rgba(255,255,255,0.03)",
-                  boxShadow: "var(--shadow-sm)",
-                  textAlign: "center",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.05rem",
-                    marginBottom: "0.75rem",
-                  }}
-                >
-                  {current.label}
-                </h3>
-
-                <iframe
-                  src={`${base}${current.file}`}
-                  title={current.label}
-                  style={{
-                    width: "100%",
-                    height: "260px",
-                    border: "1px solid rgba(255,255,255,0.18)",
-                    borderRadius: "10px",
-                    background: "white",
-                  }}
-                />
-
-                <a
-                  href={`${base}${current.file}`}
-                  download
-                  className="site-resume-btn"
-                  style={{ marginTop: "0.75rem", display: "inline-block" }}
-                >
-                  Download PDF
-                </a>
-
-                <div
-                  style={{
-                    marginTop: "0.5rem",
-                    fontSize: "0.85rem",
-                    color: "var(--color-text-muted)",
-                  }}
-                >
-                  {index + 1} / {certifications.length}
+        <div className="certification-grid">
+          {certificationGroups.map((group, groupIndex) => (
+            <motion.section
+              key={group.topic}
+              className="certification-topic"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.4, delay: groupIndex * 0.08 }}
+            >
+              <header className="certification-topic-header">
+                <div className="certification-topic-title-row">
+                  <h3>{group.topic}</h3>
+                  <span>{group.certifications.length} certificates</span>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </header>
 
-          <button
-            onClick={next}
-            aria-label="Next certification"
-            style={{
-              border: "var(--border-thin)",
-              background: "transparent",
-              color: "var(--color-accent)",
-              padding: "0.5rem",
-              borderRadius: "50%",
-              cursor: "pointer",
-              transition: "transform 0.2s ease, background 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateX(2px) scale(1.05)";
-              e.currentTarget.style.background = "var(--color-accent-muted)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateX(0) scale(1)";
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
-            <FiChevronRight size={22} />
-          </button>
+              <div className="certification-list">
+                {group.certifications.map((certification) => (
+                  <article className="certification-card" key={certification.file}>
+                    <iframe
+                      src={`${base}${certification.file}#toolbar=0&navpanes=0`}
+                      title={`${certification.label} certificate preview`}
+                      loading="lazy"
+                      className="certification-preview"
+                    />
+
+                    <div className="certification-card-body">
+                      <h4>{certification.label}</h4>
+                      <div className="certification-actions">
+                        <a
+                          href={`${base}${certification.file}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View <FiExternalLink aria-hidden="true" />
+                        </a>
+                        <a href={`${base}${certification.file}`} download>
+                          Download <FiDownload aria-hidden="true" />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </motion.section>
+          ))}
         </div>
       </div>
     </section>

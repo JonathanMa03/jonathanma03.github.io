@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import TofuGuide from '../components/TofuGuide';
+import './Home.css';
 
-const PHRASES = ['Agentic Benchmarking', 'Robust Reasoning', 'Computer Vision', 'Data-Driven Optimization', 'Translational Research', 'Sentiment Nowcasting'];
+const PHRASES = ['Robust Reasoning', 'Causal Inference', 'Adaptive Reinforcement Learning', 'Distributionally Robust Learning', 'Text-Augmented Nowcasting', 'Computational Medical Imaging'];
 
 function Home() {
   const base = import.meta.env.BASE_URL;
@@ -41,8 +42,15 @@ function Home() {
   }, [displayedText, isDeleting, phraseIndex]);
 
   return (
-    <section className="section section-narrow">
-      <div id="home-intro">
+    <section className="section home-page">
+      <div id="home-intro" className="home-intro">
+      <img
+        src={`${base}banner.png`}
+        alt=""
+        aria-hidden="true"
+        className="home-intro-banner"
+      />
+      <div className="home-intro-content">
       <p className="eyebrow">Hi, my name is</p>
 
       <h1
@@ -65,21 +73,24 @@ function Home() {
           minHeight: '3.2rem',
         }}
       >
-        I implement tools for {' '}
-        <span style={{ color: 'var(--color-accent)' }}>
-          {displayedText}
-          <span
-            style={{
-              display: 'inline-block',
-              marginLeft: '2px',
-              animation: 'blink 1s step-end infinite',
-            }}
-          >
-            |
+        <span>I implement tools for:</span>
+        <span className="home-topic-line">
+          <span style={{ color: 'var(--color-accent)' }}>
+            {displayedText}
+            <span
+              style={{
+                display: 'inline-block',
+                marginLeft: '2px',
+                animation: 'blink 1s step-end infinite',
+              }}
+            >
+              |
+            </span>
           </span>
+          .
         </span>
-      .
       </h2>
+      </div>
       </div>
 
       <div
@@ -92,7 +103,7 @@ function Home() {
           marginTop: '2rem',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="home-headshot-wrap" style={{ display: 'flex', justifyContent: 'center' }}>
           <img
             src={`${base}me.jpg`}
             alt="Jonathan Y. Ma"
@@ -109,12 +120,12 @@ function Home() {
 
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
           <p style={{ fontSize: '1.05rem' }}>
-            I bridge quantitative theory and practical application, using statistics, mathematical optimization, and computational methods to solve interdisciplinary problems. I am particularly interested in problems where the correct methodology is not obvious, and in how emerging AI methods can complement rigorous statistical and mathematical approaches.
+            I bridge quantitative theory and practical application through statistics, optimization, and computational methods. My research focuses on how learning and decision-making systems can remain reliable under uncertainty, misspecification, and distribution shift, with applications spanning AI, forecasting, and biomedical research. I am particularly interested in problems where the appropriate methodology is not obvious and where modern AI can complement rigorous statistical and mathematical approaches.
           </p>
 
           <p style={{ fontSize: '1.05rem' }}>
             <strong style={{ color: 'var(--color-heading)' }}>Interests:</strong>{' '}
-            Probabilistic Machine Learning, Data-Driven Optimization, Efficient Statistical Computation, Robust Reasoning for LLMs, Intelligent Videogame AI, Automated Data Preparation
+            Robust & Reliable AI, Statistical Machine Learning, Bayesian Methods, Causal Inference, Reinforcement Learning, Distributionally Robust Optimization, Probabilistic Forecasting, Computational Medical Imaging
           </p>
         </div>
       </div>
