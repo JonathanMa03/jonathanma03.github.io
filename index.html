@@ -5,8 +5,16 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jonathan Y. Ma | Portfolio</title>
-    <script type="module" crossorigin src="/assets/index-Bv7t7RwP.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BoY0lDsY.css">
+    <script>
+      try {
+        const savedTheme = window.localStorage.getItem('site-theme');
+        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-CcYw6T6E.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-feFIRo3T.css">
   </head>
   <body>
     <div id="root"></div>
