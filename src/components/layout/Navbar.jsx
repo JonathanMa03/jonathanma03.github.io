@@ -1,8 +1,9 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import navLinks from '../../data/navLinks';
 
-function Navbar() {
+function Navbar({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -45,6 +46,18 @@ function Navbar() {
           >
             Resume/CV
           </NavLink>
+
+          <button
+            type="button"
+            className="site-theme-toggle"
+            data-tofu-tour="theme"
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            aria-pressed={theme === 'dark'}
+            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? <FiMoon aria-hidden="true" /> : <FiSun aria-hidden="true" />}
+          </button>
         </div>
       </nav>
     </header>

@@ -19,10 +19,10 @@ function Blog() {
             key={post.slug}
             className="hover-lift"
             style={{
-              border: '1px solid rgba(255,255,255,0.12)',
+              border: '1px solid var(--color-border-soft)',
               borderRadius: '16px',
               padding: '1.4rem',
-              background: 'rgba(255,255,255,0.03)',
+              background: 'var(--color-surface)',
               boxShadow: 'var(--shadow-sm)',
             }}
           >
@@ -71,11 +71,11 @@ function Blog() {
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.75rem',
-                    color: 'var(--color-accent)',
+                    color: 'var(--color-identity)',
                     padding: '0.3rem 0.55rem',
-                    border: '1px solid rgba(100,255,218,0.2)',
+                    border: '1px solid var(--color-identity-border)',
                     borderRadius: '999px',
-                    background: 'rgba(100,255,218,0.06)',
+                    background: 'var(--color-identity-muted)',
                   }}
                 >
                   {tag}

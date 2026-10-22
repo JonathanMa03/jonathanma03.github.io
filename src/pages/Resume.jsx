@@ -47,10 +47,10 @@ function Resume() {
               className="site-resume-btn"
               style={{
                 background: isActive
-                  ? "rgba(100,255,218,0.12)"
+                  ? "var(--color-accent-muted)"
                   : "transparent",
                 borderColor: isActive
-                  ? "rgba(100,255,218,0.45)"
+                  ? "var(--color-accent-border)"
                   : undefined,
               }}
             >
@@ -67,7 +67,7 @@ function Resume() {
           style={{
             width: "100%",
             height: "900px",
-            border: "1px solid rgba(255,255,255,0.18)",
+            border: "1px solid var(--color-border)",
             borderRadius: "10px",
             background: "white",
           }}

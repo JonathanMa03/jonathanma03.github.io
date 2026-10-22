@@ -76,8 +76,8 @@ function Contact() {
               padding: "1rem 1.25rem",
               borderRadius: "14px",
               textDecoration: "none",
-              border: "1px solid rgba(255,255,255,0.12)",
-              background: "rgba(255,255,255,0.03)",
+              border: "1px solid var(--color-border-soft)",
+              background: "var(--color-surface)",
               color: "var(--color-text-main)",
               transition: "all 0.25s ease",
             }}
@@ -85,7 +85,7 @@ function Contact() {
             <div
               style={{
                 fontSize: "1.25rem",
-                color: "var(--color-accent)",
+                color: "var(--color-identity)",
                 display: "flex",
                 alignItems: "center",
               }}

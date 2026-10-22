@@ -44,12 +44,6 @@ function Home() {
   return (
     <section className="section home-page">
       <div id="home-intro" className="home-intro">
-      <img
-        src={`${base}banner.png`}
-        alt=""
-        aria-hidden="true"
-        className="home-intro-banner"
-      />
       <div className="home-intro-content">
       <p className="eyebrow">Hi, my name is</p>
 
@@ -111,7 +105,7 @@ function Home() {
               width: '220px',
               height: '220px',
               borderRadius: '50%',
-              border: '3px solid var(--color-accent)',
+              border: '3px solid var(--color-identity)',
               objectFit: 'cover',
               boxShadow: 'var(--shadow-md)',
             }}
@@ -138,7 +132,7 @@ function Home() {
           padding: '1.5rem',
           border: 'var(--border-thin)',
           borderRadius: 'var(--radius-lg)',
-          background: 'rgba(255,255,255,0.03)',
+          background: 'var(--color-surface)',
           boxShadow: 'var(--shadow-sm)',
         }}
       >
@@ -210,8 +204,8 @@ function Home() {
                 transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
                 borderRadius: '14px',
                 cursor: 'pointer',
-                boxShadow: '0 12px 30px rgba(0,0,0,0.35)',
-                border: '1px solid rgba(255,255,255,0.14)',
+                boxShadow: 'var(--shadow-md)',
+                border: '1px solid var(--color-border)',
               }}
             >
               <div

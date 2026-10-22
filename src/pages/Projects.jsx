@@ -168,7 +168,7 @@ function Projects() {
             style={{
               height: "6px",
               borderRadius: "999px",
-              background: "rgba(255,255,255,0.06)",
+              background: "var(--color-surface-soft)",
               overflow: "hidden",
             }}
           >
@@ -275,10 +275,10 @@ function Projects() {
             key={index}
             className="hover-lift"
             style={{
-              border: "1px solid rgba(255,255,255,0.12)",
+              border: "1px solid var(--color-border-soft)",
               borderRadius: "16px",
               padding: "1.5rem",
-              background: "rgba(255,255,255,0.03)",
+              background: "var(--color-surface)",
               boxShadow: "var(--shadow-sm)",
             }}
           >
@@ -328,10 +328,10 @@ function Projects() {
 }
 
 const statCardStyle = {
-  border: "1px solid rgba(255,255,255,0.12)",
+  border: "1px solid var(--color-border-soft)",
   borderRadius: "16px",
   padding: "1.25rem",
-  background: "rgba(255,255,255,0.03)",
+  background: "var(--color-surface)",
   boxShadow: "var(--shadow-sm)",
 };
 
@@ -343,10 +343,10 @@ const statNumberStyle = {
 };
 
 const repoCardStyle = {
-  border: "1px solid rgba(255,255,255,0.12)",
+  border: "1px solid var(--color-border-soft)",
   borderRadius: "16px",
   padding: "1.25rem",
-  background: "rgba(255,255,255,0.03)",
+  background: "var(--color-surface)",
   boxShadow: "var(--shadow-sm)",
   color: "var(--color-text-main)",
 };
@@ -354,11 +354,11 @@ const repoCardStyle = {
 const tagStyle = {
   fontFamily: "var(--font-mono)",
   fontSize: "0.8rem",
-  color: "var(--color-accent)",
+  color: "var(--color-identity)",
   padding: "0.35rem 0.65rem",
-  border: "1px solid rgba(100,255,218,0.2)",
+  border: "1px solid var(--color-identity-border)",
   borderRadius: "999px",
-  background: "rgba(100,255,218,0.06)",
+  background: "var(--color-identity-muted)",
 };
 
 export default Projects;

@@ -1,4 +1,6 @@
+import { useCallback, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import BootLoader from './components/BootLoader';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -11,6 +13,13 @@ import Contact from './pages/Contact';
 import Vibes from './pages/Vibes';
 
 function App() {
+  const [isBooting, setIsBooting] = useState(true);
+  const completeBoot = useCallback(() => setIsBooting(false), []);
+
+  if (isBooting) {
+    return <BootLoader onComplete={completeBoot} />;
+  }
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

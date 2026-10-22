@@ -40,10 +40,10 @@ function Experience() {
                 borderRadius: "999px",
                 border: isActive
                   ? "1px solid var(--color-accent)"
-                  : "1px solid rgba(100,255,218,0.15)",
+                  : "1px solid var(--color-border-soft)",
                 background: isActive
-                  ? "rgba(100,255,218,0.10)"
-                  : "rgba(255,255,255,0.03)",
+                  ? "var(--color-accent-muted)"
+                  : "var(--color-surface)",
                 color: isActive
                   ? "var(--color-accent)"
                   : "var(--color-text-muted)",
@@ -70,7 +70,7 @@ function Experience() {
             top: 0,
             bottom: 0,
             width: "2px",
-            background: "rgba(100,255,218,0.18)",
+            background: "var(--color-identity-line)",
           }}
         />
 
@@ -93,9 +93,9 @@ function Experience() {
                 style={{
                   position: "relative",
                   padding: "1.25rem 1.25rem 1.25rem 1.5rem",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  border: "1px solid var(--color-border-soft)",
                   borderRadius: "16px",
-                  background: "rgba(255,255,255,0.03)",
+                  background: "var(--color-surface)",
                   boxShadow: "var(--shadow-sm)",
                 }}
               >
@@ -107,8 +107,8 @@ function Experience() {
                     width: "14px",
                     height: "14px",
                     borderRadius: "50%",
-                    background: "var(--color-accent)",
-                    boxShadow: "0 0 0 5px rgba(100,255,218,0.12)",
+                    background: "var(--color-identity)",
+                    boxShadow: "0 0 0 5px var(--color-identity-muted)",
                   }}
                 />
 
@@ -126,11 +126,11 @@ function Experience() {
                       style={{
                         fontFamily: "var(--font-mono)",
                         fontSize: "0.75rem",
-                        color: "var(--color-accent)",
+                        color: "var(--color-identity)",
                         padding: "0.3rem 0.55rem",
-                        border: "1px solid rgba(100,255,218,0.2)",
+                        border: "1px solid var(--color-identity-border)",
                         borderRadius: "999px",
-                        background: "rgba(100,255,218,0.06)",
+                        background: "var(--color-identity-muted)",
                       }}
                     >
                       {tag}

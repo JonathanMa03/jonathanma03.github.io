@@ -97,11 +97,11 @@ function BlogPost() {
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '0.75rem',
-              color: 'var(--color-accent)',
+              color: 'var(--color-identity)',
               padding: '0.3rem 0.55rem',
-              border: '1px solid rgba(100,255,218,0.2)',
+              border: '1px solid var(--color-identity-border)',
               borderRadius: '999px',
-              background: 'rgba(100,255,218,0.06)',
+              background: 'var(--color-identity-muted)',
             }}
           >
             {tag}
@@ -114,9 +114,9 @@ function BlogPost() {
           onClick={handleShare}
           className="site-resume-btn"
           style={{
-            background: copied ? 'rgba(100,255,218,0.12)' : 'transparent',
+            background: copied ? 'var(--color-accent-muted)' : 'transparent',
             color: copied ? 'var(--color-accent)' : undefined,
-            borderColor: copied ? 'rgba(100,255,218,0.35)' : undefined,
+            borderColor: copied ? 'var(--color-accent-border)' : undefined,
             transition: 'all 0.25s ease',
           }}
         >
@@ -126,7 +126,7 @@ function BlogPost() {
 
       <article
         style={{
-          borderTop: '1px solid rgba(255,255,255,0.08)',
+          borderTop: '1px solid var(--color-border-soft)',
           paddingTop: '2rem',
         }}
       >
@@ -167,7 +167,7 @@ function BlogPost() {
           gap: '1rem',
           marginTop: '3rem',
           paddingTop: '1.5rem',
-          borderTop: '1px solid rgba(255,255,255,0.08)',
+          borderTop: '1px solid var(--color-border-soft)',
         }}
       >
         <div>

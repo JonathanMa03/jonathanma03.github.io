@@ -40,6 +40,10 @@ const TOUR_STEPS = [
     message: 'The “Resume/CV” button opens a detailed look at Jonathan’s background and work.',
   },
   {
+    target: '[data-tofu-tour="theme"]',
+    message: 'Use the sun and moon button to switch between light and dark mode. There may even be a few content Easter eggs hiding between the themes!',
+  },
+  {
     target: '[data-tofu-tour="home"]',
     message: 'Finally, click the “J” anytime to return home. That’s the whole tour!',
   },
