@@ -1,49 +1,9 @@
-import {
-  FiMail,
-  FiLinkedin,
-  FiGithub,
-} from "react-icons/fi";
-import { FaInstagram, FaFacebook, FaOrcid } from "react-icons/fa";
+import socialLinks from "../data/socialLinks";
 
 function Contact() {
-  const links = [
-    {
-      label: "Email",
-      value: "jonathanma217@outlook.com",
-      href: "mailto:jonathanma217@outlook.com",
-      icon: <FiMail />,
-    },
-    {
-      label: "LinkedIn",
-      value: "linkedin.com/in/jonathanma217",
-      href: "https://www.linkedin.com/in/jonathanma217/",
-      icon: <FiLinkedin />,
-    },
-    {
-      label: "GitHub",
-      value: "github.com/JonathanMa03",
-      href: "https://github.com/JonathanMa03",
-      icon: <FiGithub />,
-    },
-    {
-      label: "ORCID",
-      value: "orcid.org/0009-0005-1185-3281",
-      href: "https://orcid.org/0009-0005-1185-3281",
-      icon: <FaOrcid />,
-    },
-    {
-      label: "Instagram",
-      value: "@jonmapiano",
-      href: "https://www.instagram.com/jonmapiano/",
-      icon: <FaInstagram />,
-    },
-    {
-      label: "Facebook",
-      value: "jonmapiano",
-      href: "https://www.facebook.com/jonmapiano",
-      icon: <FaFacebook />,
-    },
-  ];
+  const links = [...socialLinks].sort(
+    (a, b) => (a.contactOrder ?? Infinity) - (b.contactOrder ?? Infinity),
+  );
 
   return (
     <section className="section section-narrow">
@@ -62,12 +22,12 @@ function Contact() {
           gap: "1rem",
         }}
       >
-        {links.map((item) => (
+        {links.map(({ name, value, url, icon: Icon }) => (
           <a
-            key={item.label}
-            href={item.href}
-            target={item.label !== "Email" ? "_blank" : undefined}
-            rel="noopener noreferrer"
+            key={name}
+            href={url}
+            target={url.startsWith("http") ? "_blank" : undefined}
+            rel={url.startsWith("http") ? "noopener noreferrer" : undefined}
             className="hover-lift"
             style={{
               display: "flex",
@@ -90,7 +50,7 @@ function Contact() {
                 alignItems: "center",
               }}
             >
-              {item.icon}
+              <Icon aria-hidden="true" />
             </div>
 
             <div style={{ flex: 1 }}>
@@ -100,7 +60,7 @@ function Contact() {
                   fontWeight: 600,
                 }}
               >
-                {item.label}
+                {name}
               </p>
 
               <p
@@ -110,7 +70,7 @@ function Contact() {
                   color: "var(--color-text-muted)",
                 }}
               >
-                {item.value}
+                {value}
               </p>
             </div>
 

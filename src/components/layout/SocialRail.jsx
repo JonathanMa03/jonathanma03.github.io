@@ -1,10 +1,14 @@
 import socialLinks from '../../data/socialLinks';
 
 function SocialRail() {
+  const railLinks = socialLinks
+    .filter((item) => Number.isFinite(item.railOrder))
+    .sort((a, b) => a.railOrder - b.railOrder);
+
   return (
     <div className="rails-left">
       <div className="rail-stack">
-        {socialLinks.map(({ name, url, icon: Icon }) => (
+        {railLinks.map(({ name, url, icon: Icon }) => (
           <a
             key={name}
             href={url}
