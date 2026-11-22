@@ -11,6 +11,7 @@ import BlogPost from './pages/BlogPost';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 import Vibes from './pages/Vibes';
+import Assistant from './pages/Assistant';
 
 function App() {
   const [isBooting, setIsBooting] = useState(true);
@@ -32,6 +33,7 @@ function App() {
         <Route path="resume" element={<Resume />} />
         <Route path="contact" element={<Contact />} />
         <Route path="vibes" element={<Vibes />} />
+        <Route path="assistant" element={<Assistant />} />
       </Route>
     </Routes>
   );

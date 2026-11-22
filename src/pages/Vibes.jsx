@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import hobbies from '../data/hobbies';
 import vibes from '../data/vibes';
 import './Vibes.css';
 
@@ -163,10 +164,7 @@ function Vibes() {
         <div>
           <p className="eyebrow">06. Vibes</p>
           <h1 className="section-heading">Impeccable Vibes</h1>
-          <p className="vibes-lede">
-            A small widget for what has been shaping my vibes lately—current
-            favorites, repeat listens, and one very discerning cat&apos;s pick.
-          </p>
+          <p className="vibes-lede">{hobbies.vibesIntro}</p>
         </div>
 
         <div className="vibes-equalizer" aria-hidden="true">

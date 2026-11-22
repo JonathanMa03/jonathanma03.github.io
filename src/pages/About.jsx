@@ -1,6 +1,9 @@
 import { FiDownload, FiExternalLink } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import certifications from "../data/certifications";
+import education from "../data/education";
+import profile from "../data/profile";
+import research from "../data/research";
 import "./About.css";
 
 function About() {
@@ -29,106 +32,69 @@ function About() {
 
       <h2>Education</h2>
       <div className="education-grid">
-        <article className="education-card">
-          <p className="education-level">Undergraduate</p>
-          <h3>Rutgers University</h3>
-          <p className="education-degree">
-            B.S. Finance, B.A. Economics, Minor in Statistics
-          </p>
+        {education.map((entry) => (
+          <article className="education-card" key={entry.level}>
+            <p className="education-level">{entry.level}</p>
+            <h3>{entry.institution}</h3>
+            <p className="education-degree">{entry.degree}</p>
 
-          <div className="education-mentorship">
-            <p>
-              <strong>Economics:</strong> I am grateful for{' '}
-              <a
-                href="https://economics.camden.rutgers.edu/faculty/tetsuji-yamada/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Dr. Tetsuji Yamada
-              </a>{' '}
-              and{' '}
-              <a
-                href="https://economics.camden.rutgers.edu/faculty/i-ming-chiu/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Dr. I-Ming Chiu
-              </a>{' '}
-              for introducing me to empirical economic research.
-            </p>
+            {entry.mentorship && (
+              <div className="education-mentorship">
+                {entry.mentorship.map((group) => (
+                  <p key={group.label}>
+                    <strong>{group.label}:</strong>{' '}
+                    {group.segments.map((segment, index) =>
+                      segment.type === 'link' ? (
+                        <a
+                          href={segment.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          key={`${segment.label}-${index}`}
+                        >
+                          {segment.label}
+                        </a>
+                      ) : (
+                        <span key={`${group.label}-${index}`}>{segment.value}</span>
+                      ),
+                    )}
+                  </p>
+                ))}
+              </div>
+            )}
 
-            <p>
-              <strong>Finance:</strong> I am grateful for{' '}
-              <a
-                href="https://sites.google.com/view/tengfeizhang/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Dr. Tengfei Zhang
-              </a>{' '}
-              for letting me be his Research Assistant, and for{' '}
-              <a
-                href="https://www.sgiwealth.com/team/ralph-giraud"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ralph Giraud&apos;s
-              </a>{' '}
-              professional development through RUCSFA.
-            </p>
-          </div>
-        </article>
-
-        <article className="education-card">
-          <p className="education-level">Graduate</p>
-          <h3>Johns Hopkins University</h3>
-          <p className="education-degree">
-            M.S.E. Applied Mathematics and Statistics, Whiting School of Engineering
-          </p>
-
-          <dl className="education-people">
-            <div>
-              <dt>Thesis advisor</dt>
-              <dd>
-                <a
-                  href="https://luhao-zhang.github.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Dr. Luhao Zhang
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt>Mentor</dt>
-              <dd>
-                <a
-                  href="https://www.ams.jhu.edu/~yxu70/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Dr. Yanxun Xu
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </article>
+            {entry.relationships && (
+              <dl className="education-people">
+                {entry.relationships.map((relationship) => (
+                  <div key={relationship.role}>
+                    <dt>{relationship.role}</dt>
+                    <dd>
+                      <a
+                        href={relationship.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {relationship.name}
+                      </a>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+          </article>
+        ))}
       </div>
 
       <h2>Skills</h2>
       <ul>
-        <li><strong>Programming:</strong> Python, R, SQL, Julia, JavaScript, MATLAB, Mathematica, Stata, SAS</li>
-        <li><strong>Data Analysis & Visualization:</strong> Pandas, NumPy, SciPy, dplyr, ggplot2, Matplotlib, Plotly, Dash, Tableau, Polars, Marimo</li>
-        <li><strong>Statistical & Quantitative Methods:</strong> Bayesian Computation, Causal Inference, Time Series Analysis, Probabilistic Forecasting, Nonparametric Statistics, RLVR, RLHF, MCMC Simulation</li>
-        <li><strong>Tools & Platforms:</strong> GitHub, Jupyter, VS Code, Docker, PostgreSQL, Supabase, Vercel, Railway, Bloomberg Terminal, S&amp;P Capital IQ, Netlify, Jira</li>
-        <li><strong>R Libraries:</strong> tidyverse, dplyr, ggplot2, lavaan, brms, caret, BART, bvar, ggdag, text2vec</li>
-        <li><strong>Python Libraries:</strong> PyTorch, scikit-learn, scikit-fda, pandas, NumPy, SciPy, OpenCV, CVXPY, Pyro, sentence-transformers, Selenium, LangChain, LangGraph</li>
+        {profile.skills.map((skill) => (
+          <li key={skill.label}>
+            <strong>{skill.label}:</strong> {skill.items.join(', ')}
+          </li>
+        ))}
       </ul>
 
       <h2>Career Goals & Interests</h2>
-      <p>
-       I work at the intersection of applied mathematics, statistics, optimization, and machine learning, with the goal of bridging quantitative theory and practical application. My interests center on developing reliable learning and decision-making systems that operate under uncertainty, misspecification, and distribution shift. Drawing on work across economics, finance, biomedical research, and AI, I am especially interested in problems where the appropriate methodology is not obvious and where statistical reasoning can complement emerging AI methods. Long term, I hope to develop rigorous, interpretable, and computationally practical methods that improve scientific discovery, forecasting, human-AI collaboration, and data-driven decision-making.
-      </p>
+      <p>{research.careerGoals}</p>
 
       <div className="certifications-section">
         <h2>Certifications</h2>
@@ -138,7 +104,7 @@ function About() {
 
         <div className="certification-grid">
           {certificationGroups.map((group, groupIndex) => (
-            <motion.section
+            <Motion.section
               key={group.topic}
               className="certification-topic"
               initial={{ opacity: 0, y: 20 }}
@@ -181,7 +147,7 @@ function About() {
                   </article>
                 ))}
               </div>
-            </motion.section>
+            </Motion.section>
           ))}
         </div>
       </div>

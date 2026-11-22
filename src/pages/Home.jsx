@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import TofuGuide from '../components/TofuGuide';
+import profile from '../data/profile';
+import research from '../data/research';
 import './Home.css';
 
-const PHRASES = ['Robust Reasoning', 'Causal Inference', 'Adaptive Reinforcement Learning', 'Distributionally Robust Learning', 'Text-Augmented Nowcasting', 'Computational Medical Imaging'];
+const PHRASES = research.heroTopics;
 
 function Home() {
   const base = import.meta.env.BASE_URL;
@@ -45,7 +48,7 @@ function Home() {
     <section className="section home-page">
       <div id="home-intro" className="home-intro">
       <div className="home-intro-content">
-      <p className="eyebrow">Hi, my name is</p>
+      <p className="eyebrow">{profile.greeting}</p>
 
       <h1
         style={{
@@ -53,7 +56,7 @@ function Home() {
           marginBottom: '0.35rem',
         }}
       >
-        Jonathan Y. Ma.
+        {profile.name}
       </h1>
 
       <h2
@@ -100,7 +103,7 @@ function Home() {
         <div className="home-headshot-wrap" style={{ display: 'flex', justifyContent: 'center' }}>
           <img
             src={`${base}me.jpg`}
-            alt="Jonathan Y. Ma"
+            alt={profile.headshotAlt}
             style={{
               width: '220px',
               height: '220px',
@@ -114,12 +117,12 @@ function Home() {
 
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
           <p style={{ fontSize: '1.05rem' }}>
-            I bridge quantitative theory and practical application through statistics, optimization, and computational methods. My research focuses on how learning and decision-making systems can remain reliable under uncertainty, misspecification, and distribution shift, with applications spanning AI, forecasting, and biomedical research. I am particularly interested in problems where the appropriate methodology is not obvious and where modern AI can complement rigorous statistical and mathematical approaches.
+            {research.summary}
           </p>
 
           <p style={{ fontSize: '1.05rem' }}>
             <strong style={{ color: 'var(--color-heading)' }}>Interests:</strong>{' '}
-            Robust & Reliable AI, Statistical Machine Learning, Bayesian Methods, Causal Inference, Reinforcement Learning, Distributionally Robust Optimization, Probabilistic Forecasting, Computational Medical Imaging
+            {research.interests.join(', ')}
           </p>
         </div>
       </div>
@@ -150,24 +153,21 @@ function Home() {
             marginBottom: '0.75rem',
           }}
         >
-          Personal AI Assistant
+          {profile.assistant.title}
         </h3>
 
         <p style={{ maxWidth: '720px' }}>
-          I built an AI assistant with access to my resume, course notes,
-          and research materials. It can answer questions about my academic
-          background, technical interests, projects, and ongoing work (Bonus: and some hobbies too!).
+          {profile.assistant.description}
         </p>
 
         <div style={{ marginTop: '1rem' }}>
-          <a
-            href="https://agentic-jym.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/assistant"
             className="site-resume-btn"
+            data-tofu-tour="assistant"
           >
-            Chat with my AI Assistant →
-          </a>
+            Chat with Tofu
+          </Link>
         </div>
       </div>
 

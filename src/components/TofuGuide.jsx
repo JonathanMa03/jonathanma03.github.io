@@ -44,6 +44,11 @@ const TOUR_STEPS = [
     message: 'Use the sun and moon button to switch between light and dark mode. There may even be a few content Easter eggs hiding between the themes!',
   },
   {
+    target: '[data-tofu-tour="assistant"]',
+    message: 'Don’t want to scroll his portfolio? Ask me a question.',
+    scrollToTarget: true,
+  },
+  {
     target: '[data-tofu-tour="home"]',
     message: 'Finally, click the “J” anytime to return home. That’s the whole tour!',
   },
@@ -126,7 +131,11 @@ function TofuGuide() {
     setTourStep(index);
     setBubble('tour');
     playOnce(index === 0 ? 'wave' : 'walk');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (step.scrollToTarget) {
+      target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const startTour = () => {
