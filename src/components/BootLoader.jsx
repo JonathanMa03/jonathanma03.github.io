@@ -44,14 +44,14 @@ function BootLoader({ onComplete }) {
       <div className="boot-loader-panel">
         <header className="boot-loader-header">
           <div>
-            <p className="boot-loader-kicker">SYSTEM BOOT // MODEL TRAINING</p>
-            <h1>Optimizing neural network</h1>
+            <p className="boot-loader-kicker">SYSTEM INITIALIZED // MODEL TRAINING</p>
+            <h1>Optimizing the network</h1>
           </div>
           <span className="boot-loader-status">RUNNING</span>
         </header>
 
         <div className="boot-loader-metrics" aria-hidden="true">
-          <span>optimizer: adam</span>
+          <span>optimizer: Adam</span>
           <span>lr: 3e-4</span>
           <span>batch: 64</span>
         </div>
