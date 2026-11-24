@@ -1,4 +1,6 @@
 const openAiUrl = 'https://api.openai.com/v1/responses';
+const githubApiUrl = 'https://api.github.com';
+const githubCacheUrl = 'https://portfolio-cache.internal/github-snapshot-v1';
 const maxRequestBytes = 32_000;
 
 function json(body, status = 200, headers = {}) {
@@ -28,10 +30,98 @@ function corsHeaders(request, env) {
   return {
     'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Max-Age': '86400',
     Vary: 'Origin',
   };
+}
+
+function githubHeaders(env) {
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+    'User-Agent': 'jonathanma03-portfolio',
+  };
+
+  if (env.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${env.GITHUB_TOKEN}`;
+  }
+
+  return headers;
+}
+
+async function fetchGithubSnapshot(env) {
+  const cache = globalThis.caches?.default;
+  const cacheKey = new Request(githubCacheUrl);
+  const cachedResponse = cache ? await cache.match(cacheKey) : null;
+
+  if (cachedResponse) return cachedResponse.json();
+
+  const headers = githubHeaders(env);
+  const [userResponse, repositoriesResponse] = await Promise.all([
+    fetch(`${githubApiUrl}/users/JonathanMa03`, { headers }),
+    fetch(
+      `${githubApiUrl}/users/JonathanMa03/repos?sort=pushed&direction=desc&per_page=100`,
+      { headers },
+    ),
+  ]);
+
+  if (!userResponse.ok || !repositoriesResponse.ok) {
+    throw new Error(
+      `GitHub request failed (${userResponse.status}, ${repositoriesResponse.status}).`,
+    );
+  }
+
+  const [user, repositories] = await Promise.all([
+    userResponse.json(),
+    repositoriesResponse.json(),
+  ]);
+
+  if (!Array.isArray(repositories)) {
+    throw new Error('GitHub returned an invalid repository response.');
+  }
+
+  const snapshot = {
+    user: {
+      public_repos: user.public_repos,
+      followers: user.followers,
+      following: user.following,
+    },
+    repositories: repositories.map((repository) => ({
+      id: repository.id,
+      name: repository.name,
+      html_url: repository.html_url,
+      description: repository.description,
+      language: repository.language,
+      stargazers_count: repository.stargazers_count,
+      forks_count: repository.forks_count,
+      pushed_at: repository.pushed_at,
+    })),
+  };
+
+  if (cache) {
+    await cache.put(cacheKey, new Response(JSON.stringify(snapshot), {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'public, max-age=900',
+      },
+    }));
+  }
+
+  return snapshot;
+}
+
+async function handleGithub(env, cors) {
+  try {
+    const snapshot = await fetchGithubSnapshot(env);
+    return json(snapshot, 200, {
+      ...cors,
+      'Cache-Control': 'public, max-age=300',
+    });
+  } catch (error) {
+    console.error('GitHub snapshot failed', error.message);
+    return json({ error: 'GitHub data is temporarily unavailable.' }, 502, cors);
+  }
 }
 
 function validatePayload(payload) {
@@ -240,6 +330,10 @@ export default {
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: cors });
+    }
+
+    if (request.method === 'GET' && url.pathname === '/github') {
+      return handleGithub(env, cors);
     }
 
     if (request.method !== 'POST' || url.pathname !== '/chat') {

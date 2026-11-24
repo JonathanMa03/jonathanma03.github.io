@@ -1,13 +1,86 @@
 import { useEffect, useMemo, useState } from "react";
 import projects from "../data/projects";
 
+const chatEndpoint = import.meta.env.VITE_CHAT_API_URL?.trim();
+const githubEndpoint = chatEndpoint
+  ? new URL("/github", chatEndpoint).toString()
+  : null;
+
 const splitCategories = (category) =>
   category.split("/").map((item) => item.trim()).filter(Boolean);
+
+const normalizeGithubLanguage = (language) => {
+  if (language === "Jupyter Notebook" || language === "IPython Notebook") {
+    return "Python";
+  }
+
+  if (["JavaScript", "TypeScript", "HTML", "MDX"].includes(language)) {
+    return "JavaScript";
+  }
+
+  if (language === "R" || language === "Rust") {
+    return "R";
+  }
+
+  return language;
+};
+
+const formatLanguageBreakdown = (repositories) => {
+  const totals = repositories.reduce((counts, repository) => {
+    if (!repository.language) return counts;
+
+    const language = normalizeGithubLanguage(repository.language);
+    counts[language] = (counts[language] || 0) + 1;
+    return counts;
+  }, {});
+
+  const ranked = Object.entries(totals).sort(
+    ([languageA, countA], [languageB, countB]) =>
+      countB - countA || languageA.localeCompare(languageB),
+  );
+  const topThree = ranked.slice(0, 3);
+  const otherCount = ranked
+    .slice(3)
+    .reduce((sum, [, count]) => sum + count, 0);
+  const groups = [
+    ...topThree,
+    ...(otherCount > 0 ? [["Other", otherCount]] : []),
+  ];
+  const total = groups.reduce((sum, [, count]) => sum + count, 0);
+
+  if (total === 0) return [];
+
+  const percentages = groups.map(([language, count]) => {
+    const exactTenths = (count / total) * 1000;
+    return {
+      language,
+      tenths: Math.floor(exactTenths),
+      remainder: exactTenths % 1,
+    };
+  });
+  let remainingTenths =
+    1000 - percentages.reduce((sum, item) => sum + item.tenths, 0);
+
+  [...percentages]
+    .sort((a, b) => b.remainder - a.remainder)
+    .forEach((item) => {
+      if (remainingTenths > 0) {
+        item.tenths += 1;
+        remainingTenths -= 1;
+      }
+    });
+
+  return percentages.map(({ language, tenths }) => ({
+    language,
+    percentage: tenths / 10,
+  }));
+};
 
 function Projects() {
   const [githubUser, setGithubUser] = useState(null);
   const [recentRepos, setRecentRepos] = useState([]);
   const [topLanguages, setTopLanguages] = useState([]);
+  const [githubStatus, setGithubStatus] = useState("loading");
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = useMemo(
@@ -32,72 +105,20 @@ function Projects() {
   useEffect(() => {
     async function fetchGithubData() {
       try {
-        const [userRes, repoRes] = await Promise.all([
-          fetch("https://api.github.com/users/JonathanMa03"),
-          fetch("https://api.github.com/users/JonathanMa03/repos?sort=pushed&direction=desc&per_page=100"),
-        ]);
+        if (!githubEndpoint) {
+          throw new Error("The GitHub snapshot endpoint is not configured.");
+        }
 
-        const userData = await userRes.json();
-        const repoData = await repoRes.json();
+        const response = await fetch(githubEndpoint);
+        const payload = await response.json();
+        const userData = payload.user;
+        const repoData = payload.repositories;
 
-        if (!userRes.ok || !repoRes.ok || !Array.isArray(repoData)) {
+        if (!response.ok || !userData || !Array.isArray(repoData)) {
           throw new Error("GitHub data could not be loaded.");
         }
 
-        const languageResults = await Promise.all(
-        repoData.slice(0, 25).map(async (repo) => {
-          const res = await fetch(repo.languages_url);
-          return res.json();
-          })
-        );
-
-        const languageTotals = {};
-
-        languageResults.forEach((languages) => {
-        Object.entries(languages).forEach(([language, bytes]) => {
-          let normalizedLanguage = language;
-
-          if (
-            language === "Jupyter Notebook" ||
-            language === "IPython Notebook"
-          ) {
-            normalizedLanguage = "Python";
-          }
-
-          if (
-            language === "JavaScript" ||
-            language === "TypeScript" ||
-            language === "MDX"
-          ) {
-            normalizedLanguage = "JavaScript / TypeScript";
-          }
-
-          if (
-            language === "R" ||
-            language === "Rust" 
-          ) {
-            normalizedLanguage = "R";
-          }
-
-          languageTotals[normalizedLanguage] =
-            (languageTotals[normalizedLanguage] || 0) + bytes;
-        });
-      });
-
-        const totalBytes = Object.values(languageTotals).reduce(
-          (sum, bytes) => sum + bytes,
-          0
-        );
-
-        const formattedLanguages = Object.entries(languageTotals)
-          .map(([language, bytes]) => ({
-            language,
-            percentage: totalBytes ? (bytes / totalBytes) * 100 : 0,
-          }))
-          .sort((a, b) => b.percentage - a.percentage)
-          .slice(0, 4);
-
-        setTopLanguages(formattedLanguages);
+        const formattedLanguages = formatLanguageBreakdown(repoData);
 
         const oneMonthAgo = new Date();
         oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
@@ -109,8 +130,11 @@ function Projects() {
 
         setGithubUser(userData);
         setRecentRepos(recent);
+        setTopLanguages(formattedLanguages);
+        setGithubStatus("ready");
       } catch (error) {
         console.error("GitHub API error:", error);
+        setGithubStatus("error");
       }
     }
 
@@ -211,6 +235,8 @@ function Projects() {
           </div>
         </div>
       ))
+    ) : githubStatus === "error" ? (
+      <p style={{ margin: 0 }}>Temporarily unavailable.</p>
     ) : (
       <p style={{ margin: 0 }}>Loading languages...</p>
     )}
