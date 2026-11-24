@@ -1,21 +1,48 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import projects from "../data/projects";
+
+const splitCategories = (category) =>
+  category.split("/").map((item) => item.trim()).filter(Boolean);
 
 function Projects() {
   const [githubUser, setGithubUser] = useState(null);
   const [recentRepos, setRecentRepos] = useState([]);
   const [topLanguages, setTopLanguages] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const categories = useMemo(
+    () => [
+      "All",
+      ...new Set(projects.flatMap((project) => splitCategories(project.category))),
+    ].sort((a, b) => {
+      if (a === "All") return -1;
+      if (b === "All") return 1;
+      return a.localeCompare(b);
+    }),
+    [],
+  );
+
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projects;
+    return projects.filter((project) =>
+      splitCategories(project.category).includes(activeCategory)
+    );
+  }, [activeCategory]);
 
   useEffect(() => {
     async function fetchGithubData() {
       try {
         const [userRes, repoRes] = await Promise.all([
           fetch("https://api.github.com/users/JonathanMa03"),
-          fetch("https://api.github.com/users/JonathanMa03/repos?sort=updated"),
+          fetch("https://api.github.com/users/JonathanMa03/repos?sort=pushed&direction=desc&per_page=100"),
         ]);
 
         const userData = await userRes.json();
         const repoData = await repoRes.json();
+
+        if (!userRes.ok || !repoRes.ok || !Array.isArray(repoData)) {
+          throw new Error("GitHub data could not be loaded.");
+        }
 
         const languageResults = await Promise.all(
         repoData.slice(0, 25).map(async (repo) => {
@@ -76,7 +103,8 @@ function Projects() {
         oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
 
         const recent = repoData
-          .filter((repo) => new Date(repo.updated_at) >= oneMonthAgo)
+          .filter((repo) => new Date(repo.pushed_at) >= oneMonthAgo)
+          .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
           .slice(0, 4);
 
         setGithubUser(userData);
@@ -221,7 +249,7 @@ function Projects() {
                 }}
               >
                 <p className="eyebrow" style={{ marginBottom: "0.5rem" }}>
-                  Updated {new Date(repo.updated_at).toLocaleDateString()}
+                  Pushed {new Date(repo.pushed_at).toLocaleDateString()}
                 </p>
 
                 <h3
@@ -267,12 +295,54 @@ function Projects() {
       </div>
 
       {/* Selected Work */}
-      <h1 className="section-heading">Selected Work</h1>
+      <h1 className="section-heading">Selected Works</h1>
+
+      <div
+        aria-label="Filter projects by category"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "0.75rem",
+          marginTop: "1.5rem",
+          marginBottom: "2rem",
+        }}
+      >
+        {categories.map((category) => {
+          const isActive = activeCategory === category;
+
+          return (
+            <button
+              key={category}
+              type="button"
+              aria-pressed={isActive}
+              onClick={() => setActiveCategory(category)}
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.85rem",
+                padding: "0.55rem 0.9rem",
+                borderRadius: "999px",
+                border: isActive
+                  ? "1px solid var(--color-accent)"
+                  : "1px solid var(--color-border-soft)",
+                background: isActive
+                  ? "var(--color-accent-muted)"
+                  : "var(--color-surface)",
+                color: isActive
+                  ? "var(--color-accent)"
+                  : "var(--color-text-muted)",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {category}
+            </button>
+          );
+        })}
+      </div>
 
       <div style={{ display: "grid", gap: "1.5rem" }}>
-        {projects.map((project, index) => (
+        {filteredProjects.map((project) => (
           <article
-            key={index}
+            key={project.name}
             className="hover-lift"
             style={{
               border: "1px solid var(--color-border-soft)",

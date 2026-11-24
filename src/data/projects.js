@@ -1,5 +1,18 @@
 const projects = [
     {
+      name: "Interpretable Gene Programs or Foundation Models?",
+      description:
+        "An ongoing study comparing pretrained scGPT representations, sparse dictionary-learned gene programs, and processed gene-expression features for cell-type classification using public single-cell RNA-sequencing data. Each representation is evaluated with the same regularized multinomial logistic regression classifier using Macro-F1, balanced accuracy, and predictive log loss, while gene weights and cell-type activation patterns are examined to characterize the tradeoff between predictive performance and interpretability.",
+      tech: [
+        "Python",
+        "scGPT",
+        "Colab",
+        "Rockfish Clusters",
+      ],
+      link: "https://github.com/JonathanMa03/gene-complexity",
+      category: "Biostatistics / Deep Learning / Optimization",
+    },
+    {
       name: "Modern AutoCrit: Automated Eligibility Criteria Extraction for Clinical Trials",
       description:
         "An LLM-powered framework for extracting, validating, and standardizing clinical trial eligibility criteria from ClinicalTrials.gov. The platform replaces LangChain dependencies with a modular OpenAI SDK architecture, integrates ICD-10 and RxNorm terminology normalization, and includes an independent validation agent that automatically compares extracted criteria against the original XML records. The system achieved an Exact Match score of 91.8% and an F1 score of 0.96 while supporting multiple foundation models, structured exports, desktop and command-line interfaces, and reproducible clinical NLP workflows.",
@@ -9,11 +22,39 @@ const projects = [
         "SQLite",
         "ICD-10",
         "RxNorm",
-        "XML",
+        "Cloudflare Workers",
         "Tkinter",
       ],
       link: "https://github.com/JonathanMa03/modern-autocrit",
-      category: "Clinical NLP / LLMs / Information Extraction",
+      category: "NLP / Dashboarding / Explainable AI / Biostatistics",
+    },
+    {
+      name: "TriAlign: Beyond Textual Similarity in Clinical Trial Eligibility Matching",
+      description:
+        "An explainable framework for determining when clinical-trial eligibility criteria are similar in clinical meaning rather than merely similar in wording. Building on reviewed, atomic Modern AutoCrit outputs, TriAlign combines lexical and dense retrieval with matched and unmatched criterion scoring, two-stage importance weighting, selectable manual and equal-weight baselines, and a judge/critic evidence pipeline to produce trial-wide similarity scores; clinical validation and a trained continuous scoring model remain future work.",
+      tech: [
+        "Python",
+        "BioBERT Embedding",
+        "ClinicalTrials API",
+        "Agentic AI",
+        "SHAP-ley",
+      ],
+      link: "https://github.com/JonathanMa03/trialign",
+      category: "NLP / Dashboarding / Explainable AI / Biostatistics",
+    },
+    {
+      name: "Digital Professor",
+      description:
+        "A course-aware tutoring system that captures student work, grounds assistance in instructor-provided course material, tracks evidence of student understanding, and returns an appropriate tutoring action. The architecture is designed to remain course-agnostic, with Calculus serving as the current reference course for implementation and validation.",
+      tech: [
+        "Python",
+        "RAG",
+        "Jira",
+        "Agentic AI",
+        "Educational AI",
+      ],
+      link: "https://github.com/digital-professor-lab/digital-professor",
+      category: "Agentic AI / Project Management / Software Engineering",
     },
     {
       name: "TronRL: Online Reinforcement Learning for Human-Agent Adaptation",
@@ -27,7 +68,7 @@ const projects = [
       ],
       link:
         "https://github.com/JonathanMa03/tron-online-rl",
-      category: "Reinforcement Learning / Continual Learning / Human-Agent Interaction",
+      category: "Reinforcement Learning / Software Engineering / Human-Agent Interaction",
     },
     {
       name: "DiffIndEye: Diffusion-Based Retinal OCT Inpainting",
@@ -40,7 +81,7 @@ const projects = [
         "OpenCV",
       ],
       link: "https://github.com/JonathanMa03/diff-in-eye",
-      category: "Medical Imaging / Diffusion Models / Inverse Problems",
+      category: "Computer Vision / Biostatistics / Explainable AI",
     },
     {
       name: "CovarRecon-IPD: Approximate Individual Patient Data Reconstruction using Ant Colony Optimization",
@@ -55,7 +96,7 @@ const projects = [
       ],
       link:
         "https://github.com/JonathanMa03/covar-recon-IPD/tree/main",
-      category: "Inverse Problems / Data Integrity / Biostatistics",
+      category: "Biostatistics / Computer Vision / NLP / Optimization",
     },
     {
       name: "Diffusion-Based Topic Evolution in Biomedical Literature",
@@ -70,7 +111,7 @@ const projects = [
         "plotly",
       ],
       link: "https://github.com/JonathanMa03/diffusion-topic-evaluation",
-      category: "Research / NLP / Generative Modeling",
+      category: "Deep Learning / NLP / Biostatistics",
     },
     {
       name: "Causal Survival Inference from Reconstructed IPD",
@@ -83,7 +124,7 @@ const projects = [
         "matplotlib"
       ],
       link: "https://github.com/JonathanMa03/NPBS-project-MaZhu",
-      category: "Inverse Problems / Biostatistics / Causal Inference",
+      category: "Computer Vision / Biostatistics / Explainable AI",
     },
     {
       name: "CA-RNN: Calibration-Aware Recurrent Neural Networks",
@@ -98,7 +139,7 @@ const projects = [
         "Time Series"
       ],
       link: "https://github.com/JonathanMa03/innovative-droBVAR",
-      category: "Probabilistic Forecasting / Calibration / Uncertainty Quantification",
+      category: "Deep Learning / Optimization / Finance",
     },
     {
       name: "Bayesian Hierarchical Modeling of Cancer Diagnoses",
@@ -106,7 +147,7 @@ const projects = [
         "Develops a three-level Bayesian hierarchical logistic regression model using SEER data to quantify how tumor, patient, and regional factors contribute to late-stage cancer diagnosis. Parameters are estimated with the No-U-Turn Sampler and assessed using effective sample sizes and convergence diagnostics, while intra-class correlations show that patient-level heterogeneity is substantially stronger than regional variation. A Gaussian Mixture Model applied to posterior patient effects identifies nine risk clusters characterized by age, sex, and tumor features, supporting more individualized early-detection strategies.",
       tech: ["R", "Bayesian Hierarchical Modeling", "NUTS", "Gaussian Mixture Models", "SEER"],
       link: "https://absj.org/index.php/absj/article/view/114",
-      category: "Research / Healthcare / Bayesian Modeling",
+      category: "Statistical Learning / Data Pipelines / Biostatistics",
     },
     {
       name: "Comparative Analysis of BVARs with Flexible Innovation Distributions",
@@ -114,7 +155,7 @@ const projects = [
         "Implements and compares Bayesian VAR models with Gaussian, Student-t, mixture, and stochastic volatility innovations for financial time series. Uses MCMC-based inference and rolling forecasts to evaluate predictive densities and tail risk (VaR, ES), demonstrating that regime-aware and heavy-tailed models outperform standard Gaussian assumptions, especially during crisis periods.",
       tech: ["Python","numpy","pandas","scipy","matplotlib","PyMC","yfinance"],
       link: "https://github.com/JonathanMa03/pmlproject-MaZhuTao-SP26",
-      category: "Risk Modeling / Bayesian Time Series / Quantitative Finance",
+      category: "Applied Statistics / Machine Learning / Economics",
     },
     {
       name: "Predicting Depression: A Comparative ML Approach",
@@ -122,7 +163,7 @@ const projects = [
         "Compares logistic regression and random forest classifiers for depression detection using a balanced, NSDUH-derived survey dataset with demographic and psychosocial predictors. Decision thresholds were tuned using the geometric mean to prioritize recall and reduce false negatives. Logistic regression achieved 78% accuracy, 88.96% recall, and a 0.9012 AUC, outperforming the random forest's 73.87% accuracy, 88.28% recall, and 0.8882 AUC while retaining greater interpretability.",
       tech: ["R", "CARET", "dplyr", "randomForest", "Classification", "ROC/AUC"],
       link: "https://github.com/JonathanMa03/Depression-Prediction",
-      category: "Machine Learning / Healthcare",
+      category: "Statistical Learning / Biostatistics",
     },
     {
       name: "Analyzing Youth Obesity and Health Inequality",
@@ -137,7 +178,7 @@ const projects = [
         "Public Health"
       ],
       link: "https://github.com/JonathanMa03/YouthObesity",
-      category: "Health Economics / Public Health / Statistical Modeling",
+      category: "Economics / Applied Statistics",
     },
     {
       name: "Stock Price Forecasting Dashboard",
@@ -145,7 +186,7 @@ const projects = [
         "A modular neural-network forecasting application that retrieves historical market data from Yahoo Finance, supports exploratory analysis and model experimentation, and displays historical prices alongside forecasts in an interactive dashboard. Separate data collection, EDA, training, and dashboard modules—together with a notebook walkthrough and saved outputs—make the workflow easier to reproduce, inspect, and extend.",
       tech: ["Python", "yfinance", "pandas", "NumPy", "neuralforecast", "Plotly", "Dash"],
       link: "https://github.com/JonathanMa03/Stock-Forecaster",
-      category: "Finance / Time Series",
+      category: "Finance / Deep Learning / Dashboarding / Data Pipelines",
     },
     {
       name: "Market Behavior Analysis",
@@ -153,7 +194,7 @@ const projects = [
         "Analyzes Yahoo Finance price, volume, and return data to explain how stocks and sectors behave around major market events. The workflow combines exploratory time-series plots, before-and-after return densities, K-Means clustering on average return and volatility, and correlation heatmaps to surface sector sensitivities, co-movement, risk clusters, and potential diversification opportunities through a transparent and reproducible methodology.",
       tech: ["Python", "yfinance", "pandas", "scikit-learn", "Matplotlib", "Seaborn", "hvPlot"],
       link: "https://github.com/JonathanMa03/Market-Shock-Behavior",
-      category: "Finance / Visualization",
+      category: "Dashboarding / Data Pipelines / Economics",
     },
   ];
   
