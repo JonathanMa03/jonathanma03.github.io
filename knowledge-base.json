@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourceCount": 29,
-  "chunkCount": 300,
+  "chunkCount": 303,
   "chunks": [
     {
       "id": "be132736f3712a71",
@@ -2443,121 +2443,148 @@
       "content": "Label: Python Libraries\nItems:\nPyTorch, scikit-learn, scikit-fda, pandas, NumPy, SciPy, OpenCV, CVXPY, Pyro, sentence-transformers, Selenium, LangChain, LangGraph"
     },
     {
-      "id": "73d0cde95613fadc",
+      "id": "9d9f84e70d1be4b6",
+      "source": "src/data/projects.js",
+      "sourceType": "structured-data",
+      "title": "Projects",
+      "section": "Interpretable Gene Programs or Foundation Models?",
+      "url": null,
+      "content": "Name: Interpretable Gene Programs or Foundation Models?\nDescription: An ongoing study comparing pretrained scGPT representations, sparse dictionary-learned gene programs, and processed gene-expression features for cell-type classification using public single-cell RNA-sequencing data. Each representation is evaluated with the same regularized multinomial logistic regression classifier using Macro-F1, balanced accuracy, and predictive log loss, while gene weights and cell-type activation patterns are examined to characterize the tradeoff between predictive performance and interpretability.\nTech:\nPython, scGPT, Colab, Rockfish Clusters\nLink: https://github.com/JonathanMa03/gene-complexity\nCategory: Biostatistics / Deep Learning / Optimization"
+    },
+    {
+      "id": "fb2c249925415673",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Modern AutoCrit: Automated Eligibility Criteria Extraction for Clinical Trials",
       "url": null,
-      "content": "Name: Modern AutoCrit: Automated Eligibility Criteria Extraction for Clinical Trials\nDescription: An LLM-powered framework for extracting, validating, and standardizing clinical trial eligibility criteria from ClinicalTrials.gov. The platform replaces LangChain dependencies with a modular OpenAI SDK architecture, integrates ICD-10 and RxNorm terminology normalization, and includes an independent validation agent that automatically compares extracted criteria against the original XML records. The system achieved an Exact Match score of 91.8% and an F1 score of 0.96 while supporting multiple foundation models, structured exports, desktop and command-line interfaces, and reproducible clinical NLP workflows.\nTech:\nPython, OpenAI SDK, SQLite, ICD-10, RxNorm, XML, Tkinter\nLink: https://github.com/JonathanMa03/modern-autocrit\nCategory: Clinical NLP / LLMs / Information Extraction"
+      "content": "Name: Modern AutoCrit: Automated Eligibility Criteria Extraction for Clinical Trials\nDescription: An LLM-powered framework for extracting, validating, and standardizing clinical trial eligibility criteria from ClinicalTrials.gov. The platform replaces LangChain dependencies with a modular OpenAI SDK architecture, integrates ICD-10 and RxNorm terminology normalization, and includes an independent validation agent that automatically compares extracted criteria against the original XML records. The system achieved an Exact Match score of 91.8% and an F1 score of 0.96 while supporting multiple foundation models, structured exports, desktop and command-line interfaces, and reproducible clinical NLP workflows.\nTech:\nPython, OpenAI SDK, SQLite, ICD-10, RxNorm, Cloudflare Workers, Tkinter\nLink: https://github.com/JonathanMa03/modern-autocrit\nCategory: NLP / Dashboarding / Explainable AI / Biostatistics"
     },
     {
-      "id": "2fd2c78feb237872",
+      "id": "58a80ad8413f39d7",
+      "source": "src/data/projects.js",
+      "sourceType": "structured-data",
+      "title": "Projects",
+      "section": "TriAlign: Beyond Textual Similarity in Clinical Trial Eligibility Matching",
+      "url": null,
+      "content": "Name: TriAlign: Beyond Textual Similarity in Clinical Trial Eligibility Matching\nDescription: An explainable framework for determining when clinical-trial eligibility criteria are similar in clinical meaning rather than merely similar in wording. Building on reviewed, atomic Modern AutoCrit outputs, TriAlign combines lexical and dense retrieval with matched and unmatched criterion scoring, two-stage importance weighting, selectable manual and equal-weight baselines, and a judge/critic evidence pipeline to produce trial-wide similarity scores; clinical validation and a trained continuous scoring model remain future work.\nTech:\nPython, BioBERT Embedding, ClinicalTrials API, Agentic AI, SHAP-ley\nLink: https://github.com/JonathanMa03/trialign\nCategory: NLP / Dashboarding / Explainable AI / Biostatistics"
+    },
+    {
+      "id": "fcfeef7cb7239ef9",
+      "source": "src/data/projects.js",
+      "sourceType": "structured-data",
+      "title": "Projects",
+      "section": "Digital Professor",
+      "url": null,
+      "content": "Name: Digital Professor\nDescription: A course-aware tutoring system that captures student work, grounds assistance in instructor-provided course material, tracks evidence of student understanding, and returns an appropriate tutoring action. The architecture is designed to remain course-agnostic, with Calculus serving as the current reference course for implementation and validation.\nTech:\nPython, RAG, Jira, Agentic AI, Educational AI\nLink: https://github.com/digital-professor-lab/digital-professor\nCategory: Agentic AI / Project Management / Software Engineering"
+    },
+    {
+      "id": "37d541dc03ae25c8",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "TronRL: Online Reinforcement Learning for Human-Agent Adaptation",
       "url": null,
-      "content": "Name: TronRL: Online Reinforcement Learning for Human-Agent Adaptation\nDescription: A custom human-versus-agent Tron environment for studying online reinforcement learning under nonstationary opponent behavior. The framework includes scripted baseline agents, PPO pretraining, gameplay logging, replay analysis, checkpointing, continual learning experiments, and infrastructure for evaluating adaptation speed and catastrophic forgetting.\nTech:\nPython, Gymnasium, Stable-Baselines3, PyTorch\nLink: https://github.com/JonathanMa03/tron-online-rl\nCategory: Reinforcement Learning / Continual Learning / Human-Agent Interaction"
+      "content": "Name: TronRL: Online Reinforcement Learning for Human-Agent Adaptation\nDescription: A custom human-versus-agent Tron environment for studying online reinforcement learning under nonstationary opponent behavior. The framework includes scripted baseline agents, PPO pretraining, gameplay logging, replay analysis, checkpointing, continual learning experiments, and infrastructure for evaluating adaptation speed and catastrophic forgetting.\nTech:\nPython, Gymnasium, Stable-Baselines3, PyTorch\nLink: https://github.com/JonathanMa03/tron-online-rl\nCategory: Reinforcement Learning / Software Engineering / Human-Agent Interaction"
     },
     {
-      "id": "011a115128192ba3",
+      "id": "823cb2121b709ae6",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "DiffIndEye: Diffusion-Based Retinal OCT Inpainting",
       "url": null,
-      "content": "Name: DiffIndEye: Diffusion-Based Retinal OCT Inpainting\nDescription: Research-oriented framework for studying diffusion-based image inpainting on retinal OCT scans. The project treats OCT reconstruction as an inverse problem, where partially masked retinal images are reconstructed using classical baselines and conditional DDPMs. It includes preprocessing pipelines, synthetic stripe corruption, baseline inpainting methods, modular diffusion training, checkpoint-based evaluation, and reproducible reconstruction experiments.\nTech:\nPython, PyTorch, Medical Imaging, OpenCV\nLink: https://github.com/JonathanMa03/diff-in-eye\nCategory: Medical Imaging / Diffusion Models / Inverse Problems"
+      "content": "Name: DiffIndEye: Diffusion-Based Retinal OCT Inpainting\nDescription: Research-oriented framework for studying diffusion-based image inpainting on retinal OCT scans. The project treats OCT reconstruction as an inverse problem, where partially masked retinal images are reconstructed using classical baselines and conditional DDPMs. It includes preprocessing pipelines, synthetic stripe corruption, baseline inpainting methods, modular diffusion training, checkpoint-based evaluation, and reproducible reconstruction experiments.\nTech:\nPython, PyTorch, Medical Imaging, OpenCV\nLink: https://github.com/JonathanMa03/diff-in-eye\nCategory: Computer Vision / Biostatistics / Explainable AI"
     },
     {
-      "id": "84edc10e734f160e",
+      "id": "b688e2719d6e2537",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "CovarRecon-IPD: Approximate Individual Patient Data Reconstruction using Ant Colony Optimization",
       "url": null,
-      "content": "Name: CovarRecon-IPD: Approximate Individual Patient Data Reconstruction using Ant Colony Optimization\nDescription: A research framework for quantifying uncertainty in reconstructed individual patient data (IPD) from published clinical trials. Rather than treating reconstructed datasets as fixed, the project explores the geometry of the feasible reconstruction space using Monte Carlo sampling, simulated tempering, extremal optimization, and ant colony optimization to study how treatment-effect estimates vary across admissible patient-level assignments.\nTech:\nPython, NumPy, SciPy, Survival Analysis, Optimization\nLink: https://github.com/JonathanMa03/covar-recon-IPD/tree/main\nCategory: Inverse Problems / Data Integrity / Biostatistics"
+      "content": "Name: CovarRecon-IPD: Approximate Individual Patient Data Reconstruction using Ant Colony Optimization\nDescription: A research framework for quantifying uncertainty in reconstructed individual patient data (IPD) from published clinical trials. Rather than treating reconstructed datasets as fixed, the project explores the geometry of the feasible reconstruction space using Monte Carlo sampling, simulated tempering, extremal optimization, and ant colony optimization to study how treatment-effect estimates vary across admissible patient-level assignments.\nTech:\nPython, NumPy, SciPy, Survival Analysis, Optimization\nLink: https://github.com/JonathanMa03/covar-recon-IPD/tree/main\nCategory: Biostatistics / Computer Vision / NLP / Optimization"
     },
     {
-      "id": "5268df1f78b9900c",
+      "id": "3dbc0f35d7e1ab60",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Diffusion-Based Topic Evolution in Biomedical Literature",
       "url": null,
-      "content": "Name: Diffusion-Based Topic Evolution in Biomedical Literature\nDescription: Builds a dynamic framework for modeling how biomedical research topics evolve over time using modern machine learning and probabilistic methods. PubMed abstracts are collected, embedded, clustered, and aligned into trajectories. A diffusion model captures uncertainty and nonlinear topic evolution.\nTech:\nPython, pandas, PyTorch, SQLite, sentence-transformers, plotly\nLink: https://github.com/JonathanMa03/diffusion-topic-evaluation\nCategory: Research / NLP / Generative Modeling"
+      "content": "Name: Diffusion-Based Topic Evolution in Biomedical Literature\nDescription: Builds a dynamic framework for modeling how biomedical research topics evolve over time using modern machine learning and probabilistic methods. PubMed abstracts are collected, embedded, clustered, and aligned into trajectories. A diffusion model captures uncertainty and nonlinear topic evolution.\nTech:\nPython, pandas, PyTorch, SQLite, sentence-transformers, plotly\nLink: https://github.com/JonathanMa03/diffusion-topic-evaluation\nCategory: Deep Learning / NLP / Biostatistics"
     },
     {
-      "id": "9d57419c9c9cb119",
+      "id": "ee2e7e4b4f1b06c8",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Causal Survival Inference from Reconstructed IPD",
       "url": null,
-      "content": "Name: Causal Survival Inference from Reconstructed IPD\nDescription: A Bayesian nonparametric framework for estimating causal treatment effects from reconstructed Kaplan–Meier data. Combines covariate augmentation, target-population reweighting, and uncertainty quantification via Dirichlet weighting, with a model-based NTR hazard extension. Demonstrates that reconstruction pipelines and modeling assumptions can materially change clinical conclusions.\nTech:\nPython, pandas, numpy, matplotlib\nLink: https://github.com/JonathanMa03/NPBS-project-MaZhu\nCategory: Inverse Problems / Biostatistics / Causal Inference"
+      "content": "Name: Causal Survival Inference from Reconstructed IPD\nDescription: A Bayesian nonparametric framework for estimating causal treatment effects from reconstructed Kaplan–Meier data. Combines covariate augmentation, target-population reweighting, and uncertainty quantification via Dirichlet weighting, with a model-based NTR hazard extension. Demonstrates that reconstruction pipelines and modeling assumptions can materially change clinical conclusions.\nTech:\nPython, pandas, numpy, matplotlib\nLink: https://github.com/JonathanMa03/NPBS-project-MaZhu\nCategory: Computer Vision / Biostatistics / Explainable AI"
     },
     {
-      "id": "0f26260cbdbf5ddb",
+      "id": "e17d0ea0cfe79769",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "CA-RNN: Calibration-Aware Recurrent Neural Networks",
       "url": null,
-      "content": "Name: CA-RNN: Calibration-Aware Recurrent Neural Networks\nDescription: My master's thesis develops CA-RNN and CA-BRNN, multivariate probabilistic forecasting models that augment joint negative log likelihood with differentiable projected-PIT and temporal PIT-moment penalties to target distributional and sequential calibration during training. Frequentist and variational Bayesian variants are evaluated against historical, VAR, and VAR-GARCH benchmarks across controlled data-generating processes, market regimes, distribution shifts, ablations, and a disjoint external asset panel. The project is packaged as a reproducible PyTorch library with leakage-safe chronological splits, deterministic seeds, validation checkpointing, automated tests, structured experiment artifacts, and prespecified bootstrap inference.\nTech:\nPython, PyTorch, Variational Inference, Probabilistic Forecasting, Calibration, Time Series\nLink: https://github.com/JonathanMa03/innovative-droBVAR\nCategory: Probabilistic Forecasting / Calibration / Uncertainty Quantification"
+      "content": "Name: CA-RNN: Calibration-Aware Recurrent Neural Networks\nDescription: My master's thesis develops CA-RNN and CA-BRNN, multivariate probabilistic forecasting models that augment joint negative log likelihood with differentiable projected-PIT and temporal PIT-moment penalties to target distributional and sequential calibration during training. Frequentist and variational Bayesian variants are evaluated against historical, VAR, and VAR-GARCH benchmarks across controlled data-generating processes, market regimes, distribution shifts, ablations, and a disjoint external asset panel. The project is packaged as a reproducible PyTorch library with leakage-safe chronological splits, deterministic seeds, validation checkpointing, automated tests, structured experiment artifacts, and prespecified bootstrap inference.\nTech:\nPython, PyTorch, Variational Inference, Probabilistic Forecasting, Calibration, Time Series\nLink: https://github.com/JonathanMa03/innovative-droBVAR\nCategory: Deep Learning / Optimization / Finance"
     },
     {
-      "id": "0889e59ec8bf5b6e",
+      "id": "2ef678f6f1d837b5",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Bayesian Hierarchical Modeling of Cancer Diagnoses",
       "url": null,
-      "content": "Name: Bayesian Hierarchical Modeling of Cancer Diagnoses\nDescription: Develops a three-level Bayesian hierarchical logistic regression model using SEER data to quantify how tumor, patient, and regional factors contribute to late-stage cancer diagnosis. Parameters are estimated with the No-U-Turn Sampler and assessed using effective sample sizes and convergence diagnostics, while intra-class correlations show that patient-level heterogeneity is substantially stronger than regional variation. A Gaussian Mixture Model applied to posterior patient effects identifies nine risk clusters characterized by age, sex, and tumor features, supporting more individualized early-detection strategies.\nTech:\nR, Bayesian Hierarchical Modeling, NUTS, Gaussian Mixture Models, SEER\nLink: https://absj.org/index.php/absj/article/view/114\nCategory: Research / Healthcare / Bayesian Modeling"
+      "content": "Name: Bayesian Hierarchical Modeling of Cancer Diagnoses\nDescription: Develops a three-level Bayesian hierarchical logistic regression model using SEER data to quantify how tumor, patient, and regional factors contribute to late-stage cancer diagnosis. Parameters are estimated with the No-U-Turn Sampler and assessed using effective sample sizes and convergence diagnostics, while intra-class correlations show that patient-level heterogeneity is substantially stronger than regional variation. A Gaussian Mixture Model applied to posterior patient effects identifies nine risk clusters characterized by age, sex, and tumor features, supporting more individualized early-detection strategies.\nTech:\nR, Bayesian Hierarchical Modeling, NUTS, Gaussian Mixture Models, SEER\nLink: https://absj.org/index.php/absj/article/view/114\nCategory: Statistical Learning / Data Pipelines / Biostatistics"
     },
     {
-      "id": "46cdd8806fda8957",
+      "id": "2dcfbbf2f2de7035",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Comparative Analysis of BVARs with Flexible Innovation Distributions",
       "url": null,
-      "content": "Name: Comparative Analysis of BVARs with Flexible Innovation Distributions\nDescription: Implements and compares Bayesian VAR models with Gaussian, Student-t, mixture, and stochastic volatility innovations for financial time series. Uses MCMC-based inference and rolling forecasts to evaluate predictive densities and tail risk (VaR, ES), demonstrating that regime-aware and heavy-tailed models outperform standard Gaussian assumptions, especially during crisis periods.\nTech:\nPython, numpy, pandas, scipy, matplotlib, PyMC, yfinance\nLink: https://github.com/JonathanMa03/pmlproject-MaZhuTao-SP26\nCategory: Risk Modeling / Bayesian Time Series / Quantitative Finance"
+      "content": "Name: Comparative Analysis of BVARs with Flexible Innovation Distributions\nDescription: Implements and compares Bayesian VAR models with Gaussian, Student-t, mixture, and stochastic volatility innovations for financial time series. Uses MCMC-based inference and rolling forecasts to evaluate predictive densities and tail risk (VaR, ES), demonstrating that regime-aware and heavy-tailed models outperform standard Gaussian assumptions, especially during crisis periods.\nTech:\nPython, numpy, pandas, scipy, matplotlib, PyMC, yfinance\nLink: https://github.com/JonathanMa03/pmlproject-MaZhuTao-SP26\nCategory: Applied Statistics / Machine Learning / Economics"
     },
     {
-      "id": "d5da0a986dc3d2ce",
+      "id": "934024cd0d80c380",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Predicting Depression: A Comparative ML Approach",
       "url": null,
-      "content": "Name: Predicting Depression: A Comparative ML Approach\nDescription: Compares logistic regression and random forest classifiers for depression detection using a balanced, NSDUH-derived survey dataset with demographic and psychosocial predictors. Decision thresholds were tuned using the geometric mean to prioritize recall and reduce false negatives. Logistic regression achieved 78% accuracy, 88.96% recall, and a 0.9012 AUC, outperforming the random forest's 73.87% accuracy, 88.28% recall, and 0.8882 AUC while retaining greater interpretability.\nTech:\nR, CARET, dplyr, randomForest, Classification, ROC/AUC\nLink: https://github.com/JonathanMa03/Depression-Prediction\nCategory: Machine Learning / Healthcare"
+      "content": "Name: Predicting Depression: A Comparative ML Approach\nDescription: Compares logistic regression and random forest classifiers for depression detection using a balanced, NSDUH-derived survey dataset with demographic and psychosocial predictors. Decision thresholds were tuned using the geometric mean to prioritize recall and reduce false negatives. Logistic regression achieved 78% accuracy, 88.96% recall, and a 0.9012 AUC, outperforming the random forest's 73.87% accuracy, 88.28% recall, and 0.8882 AUC while retaining greater interpretability.\nTech:\nR, CARET, dplyr, randomForest, Classification, ROC/AUC\nLink: https://github.com/JonathanMa03/Depression-Prediction\nCategory: Statistical Learning / Biostatistics"
     },
     {
-      "id": "88d153a40daf73b8",
+      "id": "d35fcbbe807a34f6",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Analyzing Youth Obesity and Health Inequality",
       "url": null,
-      "content": "Name: Analyzing Youth Obesity and Health Inequality\nDescription: A public health analytics project investigating socioeconomic and racial disparities in adolescent obesity using nearly 40,000 observations from the National Survey of Children's Health (NSCH). The study combines logistic regression with average marginal effects, Concentration and Kakwani Indices, and the PRECEDE–PROCEED framework to quantify how income, healthcare access, parental education, and race influence obesity risk while evaluating equity in existing public health interventions.\nTech:\nR, Logistic Regression, Survey Analysis, Health Economics, Inequality Metrics, Public Health\nLink: https://github.com/JonathanMa03/YouthObesity\nCategory: Health Economics / Public Health / Statistical Modeling"
+      "content": "Name: Analyzing Youth Obesity and Health Inequality\nDescription: A public health analytics project investigating socioeconomic and racial disparities in adolescent obesity using nearly 40,000 observations from the National Survey of Children's Health (NSCH). The study combines logistic regression with average marginal effects, Concentration and Kakwani Indices, and the PRECEDE–PROCEED framework to quantify how income, healthcare access, parental education, and race influence obesity risk while evaluating equity in existing public health interventions.\nTech:\nR, Logistic Regression, Survey Analysis, Health Economics, Inequality Metrics, Public Health\nLink: https://github.com/JonathanMa03/YouthObesity\nCategory: Economics / Applied Statistics"
     },
     {
-      "id": "e15c1bf306873c84",
+      "id": "d38bc152b0a985ff",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Stock Price Forecasting Dashboard",
       "url": null,
-      "content": "Name: Stock Price Forecasting Dashboard\nDescription: A modular neural-network forecasting application that retrieves historical market data from Yahoo Finance, supports exploratory analysis and model experimentation, and displays historical prices alongside forecasts in an interactive dashboard. Separate data collection, EDA, training, and dashboard modules—together with a notebook walkthrough and saved outputs—make the workflow easier to reproduce, inspect, and extend.\nTech:\nPython, yfinance, pandas, NumPy, neuralforecast, Plotly, Dash\nLink: https://github.com/JonathanMa03/Stock-Forecaster\nCategory: Finance / Time Series"
+      "content": "Name: Stock Price Forecasting Dashboard\nDescription: A modular neural-network forecasting application that retrieves historical market data from Yahoo Finance, supports exploratory analysis and model experimentation, and displays historical prices alongside forecasts in an interactive dashboard. Separate data collection, EDA, training, and dashboard modules—together with a notebook walkthrough and saved outputs—make the workflow easier to reproduce, inspect, and extend.\nTech:\nPython, yfinance, pandas, NumPy, neuralforecast, Plotly, Dash\nLink: https://github.com/JonathanMa03/Stock-Forecaster\nCategory: Finance / Deep Learning / Dashboarding / Data Pipelines"
     },
     {
-      "id": "d364b0b748ede6c8",
+      "id": "05701265c41f2697",
       "source": "src/data/projects.js",
       "sourceType": "structured-data",
       "title": "Projects",
       "section": "Market Behavior Analysis",
       "url": null,
-      "content": "Name: Market Behavior Analysis\nDescription: Analyzes Yahoo Finance price, volume, and return data to explain how stocks and sectors behave around major market events. The workflow combines exploratory time-series plots, before-and-after return densities, K-Means clustering on average return and volatility, and correlation heatmaps to surface sector sensitivities, co-movement, risk clusters, and potential diversification opportunities through a transparent and reproducible methodology.\nTech:\nPython, yfinance, pandas, scikit-learn, Matplotlib, Seaborn, hvPlot\nLink: https://github.com/JonathanMa03/Market-Shock-Behavior\nCategory: Finance / Visualization"
+      "content": "Name: Market Behavior Analysis\nDescription: Analyzes Yahoo Finance price, volume, and return data to explain how stocks and sectors behave around major market events. The workflow combines exploratory time-series plots, before-and-after return densities, K-Means clustering on average return and volatility, and correlation heatmaps to surface sector sensitivities, co-movement, risk clusters, and potential diversification opportunities through a transparent and reproducible methodology.\nTech:\nPython, yfinance, pandas, scikit-learn, Matplotlib, Seaborn, hvPlot\nLink: https://github.com/JonathanMa03/Market-Shock-Behavior\nCategory: Dashboarding / Data Pipelines / Economics"
     },
     {
       "id": "026c44d159659a87",
@@ -2704,5 +2731,5 @@
       "content": "Label: Tofu's Pick\nDescription: Personally inspected, paw-approved, and curated by the resident spiritual mascot.\nEmbed Url: https://open.spotify.com/embed/track/3qzqexZ8YEYvaLbfGZedfh?utm_source=generator\nHeight: 152"
     }
   ],
-  "contentHash": "07785e89162691199c6a82f865ed66995a65400a43bc3f3fd74349945a0ddfe2"
+  "contentHash": "c3cf87aeb112ba86d0ffba3b312596702d6faeb1924c2f71ab3394c1bdbd5105"
 }
