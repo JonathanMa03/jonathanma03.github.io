@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceCount": 29,
-  "chunkCount": 303,
+  "sourceCount": 30,
+  "chunkCount": 318,
   "chunks": [
     {
       "id": "be132736f3712a71",
@@ -830,6 +830,141 @@
       "section": "The Bigger Picture",
       "url": "/blog/pcr",
       "content": "PCR is a nice example of how proportional asymptotics can change the interpretation of a familiar statistical method.\n\nIn the classical regime, we can roughly tell the story\n\n$$\n\\text{sample PCs}\n\\longrightarrow\n\\text{population PCs}\n\\longrightarrow\n\\text{regression}.\n$$\n\nIn the proportional regime, the first arrow is no longer automatic.\n\nThe empirical spectrum remains noisy, empirical eigenvectors can remain imperfect estimates of population directions, and sufficiently weak population components may not be recoverable at all.\n\nPCR therefore becomes less about simply \"finding the important principal components\" and more about deciding how much of a noisy empirical spectrum should be trusted for prediction.\n\nThat leads to a much more interesting question than simply asking how many PCs to keep:\n\n> **When $p$ and $n$ grow together, how much information about the population signal actually survives in the empirical principal components?**\n\nAnd that is where a seemingly straightforward regression technique starts connecting PCA, random matrix theory, spectral regularization, and high-dimensional statistical inference."
+    },
+    {
+      "id": "70c530ad6121811e",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "url": "/blog/recommender",
+      "content": "One thing I find interesting about Spotify is how it recommends songs that I have never heard before but somehow fit my musical preferences.\n\nAt first, this seems like a straightforward prediction problem: learn what someone likes and recommend more of it.\n\nBut suppose we could mathematically represent every song as a vector and every listener as another vector describing their musical preferences.\n\nRecommending music could then become a simple application of linear algebra.\n\nHowever, this raises a more interesting question:\n\n> **If a recommendation system already knows what I like, why should it ever recommend something different?**\n\nThis is where recommendation systems start connecting to statistical learning, optimization, and reinforcement learning.\n\nLet's build a simplified Spotify-like recommendation system to understand why.\n\n---"
+    },
+    {
+      "id": "26c59eaa2071f151",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "Representing Music as Vectors",
+      "url": "/blog/recommender",
+      "content": "Suppose we describe every song using five musical genres: pop, rock, jazz, classical, and electronic.\n\nWe could represent a song as a vector\n\n$$\nv_i\\in\\mathbb R^5,\n$$\n\nwhere each coordinate describes how strongly the song belongs to a particular genre.\n\nFor example, an electronic pop song might look like\n\n$$\nv_1=\n\\begin{bmatrix}\n0.3\\\\\n0.0\\\\\n0.0\\\\\n0.0\\\\\n0.7\n\\end{bmatrix},\n$$\n\nwhile a song combining jazz and classical influences might look like\n\n$$\nv_2=\n\\begin{bmatrix}\n0.0\\\\\n0.0\\\\\n0.8\\\\\n0.2\\\\\n0.0\n\\end{bmatrix}.\n$$\n\nNow suppose we represent a listener using a preference vector,\n\n$$\nu=\n\\begin{bmatrix}\n0.6\\\\\n0.4\\\\\n0.1\\\\\n0.2\\\\\n0.9\n\\end{bmatrix}.\n$$\n\nThis listener strongly prefers electronic music and pop, occasionally listens to rock, and appears less interested in jazz and classical music.\n\nBoth the listener and the songs now exist in the same vector space.\n\nThe recommendation problem becomes a question of measuring how well these vectors align.\n\n---"
+    },
+    {
+      "id": "0a273e23b669fbdc",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "Recommendation as a Dot Product",
+      "url": "/blog/recommender",
+      "content": "One of the simplest ways to measure compatibility between two vectors is the dot product,\n\n$$\ns(u,v_i)=u^\\top v_i.\n$$\n\nExpanding,\n\n$$\nu^\\top v_i\n=\n\\sum_{j=1}^{d}u_jv_{ij}.\n$$\n\nEach musical characteristic contributes to the recommendation score according to how strongly the listener prefers it.\n\nFor our electronic pop song,\n\n$$\n\\begin{aligned}\nu^\\top v_1\n&=0.6(0.3)+0.9(0.7)\\\\\n&=0.81.\n\\end{aligned}\n$$\n\nFor our jazz-classical song,\n\n$$\n\\begin{aligned}\nu^\\top v_2\n&=0.1(0.8)+0.2(0.2)\\\\\n&=0.12.\n\\end{aligned}\n$$\n\nThe electronic song receives a substantially higher score.\n\nGiven a catalog of $N$ songs, we could simply recommend\n\n$$\ni^*\n=\n\\arg\\max_{i\\in\\{1,\\ldots,N\\}}\nu^\\top v_i.\n$$\n\nIf we wanted to generate an entire playlist, we could select the songs with the $k$ largest dot products.\n\nThere is also a nice geometric interpretation.\n\nRecall that\n\n$$\nu^\\top v_i\n=\n\\|u\\|_2\\|v_i\\|_2\\cos(\\theta_i).\n$$\n\nIf we normalize both vectors, the dot product becomes cosine similarity:\n\n$$\n\\operatorname{sim}(u,v_i)\n=\n\\frac{u^\\top v_i}\n{\\|u\\|_2\\|v_i\\|_2}.\n$$\n\nSongs whose vectors point in similar directions to the preference vector receive higher similarity scores.\n\nIf we collect all song vectors into a matrix,\n\n$$\nV=\n\\begin{bmatrix}\nv_1^\\top\\\\\nv_2^\\top\\\\\n\\vdots\\\\\nv_N^\\top\n\\end{bmatrix},\n$$\n\nthen the recommendation scores for the entire music library become\n\n$$\ns=Vu.\n$$\n\nIn principle, recommending music is just a matrix-vector multiplication followed by sorting."
+    },
+    {
+      "id": "d0514512bd750ea1",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "Recommendation as a Dot Product",
+      "url": "/blog/recommender",
+      "content": "In practice, approximate nearest-neighbor and maximum inner-product search algorithms allow recommendation systems to retrieve promising candidates from millions of songs without scoring every song individually.\n\n---"
+    },
+    {
+      "id": "fb45688d5466e64d",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "From Genres to Learned Embeddings",
+      "url": "/blog/recommender",
+      "content": "Of course, music is considerably more complicated than five genres.\n\nTwo electronic songs might differ in tempo, mood, instrumentation, energy, and production style.\n\nInstead of manually defining every musical characteristic, we can learn vector representations directly from data.\n\nThese representations are called **embeddings**.\n\nSuppose we construct a listener-song interaction matrix,\n\n$$\nR\\in\\mathbb R^{m\\times n},\n$$\n\nwhere $R_{ij}$ represents some measure of interaction between listener $i$ and song $j$.\n\nThis could incorporate listening frequency, skips, saves, or playlist additions.\n\nOne classical approach is to approximate this matrix through low-rank factorization,\n\n$$\nR\\approx UV^\\top,\n$$\n\nwhere\n\n$$\nU\\in\\mathbb R^{m\\times d},\n\\qquad\nV\\in\\mathbb R^{n\\times d}.\n$$\n\nThe rows of $U$ represent listener embeddings, while the rows of $V$ represent song embeddings.\n\nThe predicted affinity between listener $i$ and song $j$ becomes\n\n$$\n\\widehat R_{ij}=u_i^\\top v_j.\n$$\n\nWe can learn these embeddings by solving\n\n$$\n\\min_{U,V}\n\\sum_{(i,j)\\in\\Omega}\n(R_{ij}-u_i^\\top v_j)^2\n+\n\\lambda\n\\left(\n\\|U\\|_F^2+\\|V\\|_F^2\n\\right),\n$$\n\nwhere $\\Omega$ represents observed interactions and $\\lambda$ controls regularization.\n\nThis is a form of **collaborative filtering**.\n\nThe interesting part is that individual embedding dimensions no longer need to correspond to explicitly defined genres.\n\nTwo songs might acquire similar embeddings simply because similar listeners enjoy them."
+    },
+    {
+      "id": "8038c1a4b4d0177f",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "From Genres to Learned Embeddings",
+      "url": "/blog/recommender",
+      "content": "Modern recommendation systems can combine these behavioral embeddings with representations learned from audio, lyrics, metadata, and listening history.\n\nThe genre example is therefore just an interpretable illustration of a much more general mathematical framework.\n\n---"
+    },
+    {
+      "id": "7558fee3dd935594",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "How Does the Preference Vector Change?",
+      "url": "/blog/recommender",
+      "content": "Suppose a listener receives a recommendation at time $t$ and provides feedback $r_t$.\n\nWe might model their expected response as\n\n$$\n\\widehat r_t=u_t^\\top v_t.\n$$\n\nTo update our preference vector, we could minimize the squared prediction error,\n\n$$\nL(u_t)\n=\n\\frac{1}{2}(r_t-u_t^\\top v_t)^2.\n$$\n\nTaking the gradient gives\n\n$$\n\\nabla_{u_t}L\n=\n-(r_t-u_t^\\top v_t)v_t.\n$$\n\nA gradient descent update therefore becomes\n\n$$\nu_{t+1}\n=\nu_t+\\eta(r_t-u_t^\\top v_t)v_t.\n$$\n\nThis has a surprisingly intuitive geometric interpretation.\n\nIf the listener enjoys a song more than expected, the preference vector moves toward the song's embedding.\n\nIf the listener enjoys it less than expected, the preference vector moves away.\n\nOver time, the system gradually learns which directions in the embedding space correspond to the listener's musical preferences.\n\nBut there is a catch.\n\nThe system can only learn from songs that the listener actually encounters.\n\n---"
+    },
+    {
+      "id": "0b015761b21972df",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "Why Not Just Maximize the Dot Product?",
+      "url": "/blog/recommender",
+      "content": "Suppose Spotify always recommended songs according to\n\n$$\nv_t\n=\n\\arg\\max_{v\\in\\mathcal V}\nu_t^\\top v.\n$$\n\nThis seems like a perfectly reasonable strategy.\n\nBut imagine that I primarily listen to electronic music.\n\nThe system learns that I enjoy electronic music, recommends more electronic music, observes more electronic music consumption, and becomes increasingly confident that electronic music is what I want.\n\nWe get a feedback loop:\n\n$$\n\\text{preferences}\n\\longrightarrow\n\\text{recommendations}\n\\longrightarrow\n\\text{observed behavior}\n\\longrightarrow\n\\text{updated preferences}.\n$$\n\nMeanwhile, I might have an undiscovered interest in jazz.\n\nThe system never learns about it because it never recommends jazz in the first place.\n\nThere is an important statistical distinction between\n\n- observing that someone dislikes jazz, and\n- never observing someone listen to jazz.\n\nBoth might produce a low estimated preference, but they represent very different levels of uncertainty.\n\nThe recommendation system is actively determining which data it gets to observe.\n\nThis creates a form of exposure bias, where existing recommendations influence the data used to construct future recommendations.\n\n> **How can a system learn that I enjoy something if it never gives me the opportunity to experience it?**\n\nThere is also a practical issue.\n\nEven if the system perfectly understands my preferences, listening to nearly identical songs repeatedly might eventually become boring.\n\nMaximizing immediate predicted satisfaction is not necessarily equivalent to maximizing long-term satisfaction.\n\n---"
+    },
+    {
+      "id": "903d3ea81a8e82ea",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "Exploration vs. Exploitation",
+      "url": "/blog/recommender",
+      "content": "This motivates one of the fundamental problems in reinforcement learning.\n\n**Exploitation** means recommending songs that the system already believes I will enjoy.\n\n**Exploration** means recommending songs whose appeal is uncertain, potentially discovering new preferences.\n\nSuppose we have two candidate songs:\n\n| Song | Predicted Satisfaction | Uncertainty |\n|---|---:|---:|\n| Electronic | 0.85 | 0.02 |\n| Jazz | 0.65 | 0.25 |\n\nA greedy recommendation system always chooses electronic music.\n\nBut notice that we are considerably more uncertain about the listener's preference for jazz.\n\nThe electronic song provides relatively predictable satisfaction.\n\nThe jazz song might provide information that improves hundreds of future recommendations.\n\nOne simple solution is an $\\epsilon$-greedy policy:\n\n$$\na_t=\n\\begin{cases}\n\\arg\\max_i u_t^\\top v_i,\n& \\text{with probability }1-\\epsilon,\\\\\n\\text{random eligible song},\n& \\text{with probability }\\epsilon.\n\\end{cases}\n$$\n\nIf $\\epsilon=0.1$, the system exploits its existing knowledge 90% of the time and explores alternatives 10% of the time.\n\nHowever, randomly recommending songs is not necessarily an efficient way to learn.\n\nIdeally, exploration should be directed toward songs that are both potentially enjoyable and informative.\n\n---"
+    },
+    {
+      "id": "7526d7b7c4b055f9",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "Adding Uncertainty to the Dot Product",
+      "url": "/blog/recommender",
+      "content": "Suppose the listener's true preference vector is unknown, and their feedback follows a linear model,\n\n$$\nr_t=u^\\top v_t+\\varepsilon_t.\n$$\n\nUsing previous interactions, we can construct a regularized least-squares estimate,\n\n$$\n\\widehat u_t=A_t^{-1}b_t,\n$$\n\nwhere\n\n$$\nA_t\n=\n\\lambda I+\n\\sum_{s=1}^{t-1}v_sv_s^\\top\n$$\n\nand\n\n$$\nb_t\n=\n\\sum_{s=1}^{t-1}r_sv_s.\n$$\n\nThe matrix $A_t$ contains information about which directions in the embedding space we have already explored.\n\nRather than simply maximizing the predicted preference, we could construct an uncertainty-adjusted recommendation score,\n\n$$\n\\boxed{\ns_t(v)\n=\n\\underbrace{\\widehat u_t^\\top v}_{\\text{exploitation}}\n+\n\\underbrace{\n\\alpha\\sqrt{v^\\top A_t^{-1}v}\n}_{\\text{exploration}}\n}\n$$\n\nThis is the intuition behind the Linear Upper Confidence Bound algorithm, or **LinUCB**.\n\nThe first term measures predicted satisfaction.\n\nThe second measures uncertainty about that prediction, scaled by an exploration parameter $\\alpha$.\n\nUsing our earlier example with $\\alpha=1$, the electronic song receives\n\n$$\ns_{\\text{electronic}}\n=\n0.85+0.02\n=\n0.87,\n$$\n\nwhile the jazz song receives\n\n$$\ns_{\\text{jazz}}\n=\n0.65+0.25\n=\n0.90.\n$$\n\nThe system now recommends jazz.\n\nNot because it necessarily believes jazz is better, but because learning whether it is better has value.\n\nAs the system observes more jazz-related interactions, its uncertainty in that direction decreases.\n\nWhat I find particularly elegant is that we have not abandoned the original dot product.\n\nWe have simply augmented it with a statistical measure of what we do not yet know.\n\n---"
+    },
+    {
+      "id": "62394821c435e04c",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "A Bayesian Interpretation",
+      "url": "/blog/recommender",
+      "content": "Another approach is to represent the listener's preferences using an entire probability distribution rather than a single estimated vector.\n\nSuppose\n\n$$\nu\\mid\\mathcal D_t\n\\sim\n\\mathcal N(\\mu_t,\\Sigma_t),\n$$\n\nwhere $\\mathcal D_t$ represents the observed listening history.\n\nThe latent preference score for a song then follows\n\n$$\nu^\\top v\\mid\\mathcal D_t\n\\sim\n\\mathcal N\n\\left(\n\\mu_t^\\top v,\nv^\\top\\Sigma_t v\n\\right).\n$$\n\nWe now have both an expected preference and uncertainty surrounding that preference.\n\nOne approach is to sample a plausible preference vector from the posterior,\n\n$$\n\\widetilde u_t\n\\sim\np(u\\mid\\mathcal D_t),\n$$\n\nand recommend\n\n$$\nv_t\n=\n\\arg\\max_{v\\in\\mathcal V}\n\\widetilde u_t^\\top v.\n$$\n\nThis is known as **Thompson sampling**.\n\nIf we are highly confident about the listener's preferences, posterior samples will look similar, resulting primarily in exploitation.\n\nIf we are uncertain about particular genres, some posterior samples will favor those genres, naturally encouraging exploration.\n\nRather than explicitly introducing randomness into recommendations, we allow uncertainty about the listener's preferences to drive exploration.\n\n---"
+    },
+    {
+      "id": "4e6288ac3ef23f63",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "From Recommendation to Reinforcement Learning",
+      "url": "/blog/recommender",
+      "content": "The methods we have discussed so far are examples of bandit algorithms.\n\nThey address the problem of learning which recommendations produce desirable rewards.\n\nBut music consumption is inherently sequential.\n\nThe song I hear now may influence what I want to hear next.\n\nDiscovering a new artist might change my listening habits for months. Hearing five nearly identical songs might make me want something completely different.\n\nThis motivates a more general reinforcement learning formulation.\n\nWe can describe the recommendation problem as a Markov decision process,\n\n$$\n\\mathcal M=(\\mathcal S,\\mathcal A,P,R,\\gamma).\n$$\n\nThe state $s_t$ could contain the listener's preference embedding, recent listening history, and current context.\n\nThe action $a_t$ is the song being recommended.\n\nThe reward $r_t$ represents the listener's response, while the state evolves according to\n\n$$\ns_{t+1}\n\\sim\nP(\\cdot\\mid s_t,a_t).\n$$\n\nRather than maximizing the predicted satisfaction of the next song, we seek a policy $\\pi$ that maximizes expected cumulative satisfaction,\n\n$$\nJ(\\pi)\n=\n\\mathbb E_\\pi\n\\left[\n\\sum_{t=0}^{\\infty}\n\\gamma^t r_t\n\\right].\n$$\n\nThe discount factor $\\gamma$ determines how much importance we place on future rewards relative to immediate rewards.\n\nThe recommendation problem is no longer simply\n\n$$\n\\max_v u^\\top v.\n$$\n\nIt becomes an optimization problem over an entire sequence of recommendations.\n\n---"
+    },
+    {
+      "id": "d3dd331b6aa0896d",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "Why the Best Song Right Now Might Not Be the Best Recommendation",
+      "url": "/blog/recommender",
+      "content": "The distinction becomes particularly clear through the Bellman equation,\n\n$$\nQ^*(s,a)\n=\n\\mathbb E\n\\left[\nr_t+\n\\gamma\\max_{a'}Q^*(s_{t+1},a')\n\\mid s_t=s,a_t=a\n\\right].\n$$\n\nThe value of recommending a song now contains two components:\n\n$$\n\\text{action value}\n=\n\\text{immediate reward}\n+\n\\text{discounted future value}.\n$$\n\nSuppose recommending another electronic song produces an immediate reward of $0.9$, while recommending an unfamiliar jazz song produces an expected reward of $0.6$.\n\nA greedy system chooses electronic music.\n\nBut suppose discovering jazz leads to better future recommendations.\n\nFor illustration, let\n\n$$\n\\gamma=0.9.\n$$\n\nIf the expected continuation values are $2.0$ and $3.0$, respectively, then\n\n$$\nQ_{\\text{electronic}}\n=\n0.9+0.9(2.0)\n=\n2.7,\n$$\n\nwhile\n\n$$\nQ_{\\text{jazz}}\n=\n0.6+0.9(3.0)\n=\n3.3.\n$$\n\nThe jazz recommendation has a lower immediate reward but a higher long-term value.\n\nThis is the fundamental distinction between greedy recommendation and reinforcement learning.\n\nIf the state also includes the system's current knowledge about the listener, then acquiring information can itself improve future decision-making.\n\nReinforcement learning provides a framework for capturing these downstream consequences.\n\nIt does not automatically solve exploration, however. We still need an appropriate exploration strategy, state representation, and reward function.\n\n---"
+    },
+    {
+      "id": "17761143612d8323",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "What Should Spotify Actually Optimize?",
+      "url": "/blog/recommender",
+      "content": "There is one final complication.\n\nWhat exactly constitutes a good recommendation?\n\nIs it listening duration? Playlist additions? Discovering new artists? Long-term satisfaction?\n\nThese are not necessarily equivalent objectives.\n\nWe could imagine a reward function of the form\n\n$$\nr_t\n=\nw_1r_t^{\\text{engagement}}\n+\nw_2r_t^{\\text{discovery}}\n+\nw_3r_t^{\\text{satisfaction}}\n-\nw_4r_t^{\\text{repetition}}.\n$$\n\nDifferent choices of weights produce different recommendation behaviors.\n\nA system that exclusively maximizes listening duration might favor familiar songs because they are less likely to be skipped.\n\nA system that places more value on discovery might produce a more diverse listening experience.\n\nThis connects to a broader problem in reinforcement learning:\n\n> **Optimizing a measurable proxy for satisfaction is not necessarily the same as optimizing satisfaction itself.**\n\nEven a mathematically optimal recommendation policy can produce undesirable behavior if it is optimizing the wrong objective.\n\n---"
+    },
+    {
+      "id": "1690b71a9d484cc0",
+      "source": "src/content/blog/recommender.md",
+      "sourceType": "blog",
+      "title": "How Does Spotify Know What I Like? The Mathematics of Recommendation Systems",
+      "section": "The Bigger Picture",
+      "url": "/blog/recommender",
+      "content": "What I find interesting about recommendation systems is how naturally they connect several areas of mathematics and statistics.\n\nWe start with a simple dot product,\n\n$$\nu^\\top v,\n$$\n\nwhich measures compatibility between a listener and a song.\n\nMatrix factorization allows us to learn latent representations of musical preferences.\n\nStatistical learning allows us to update those representations from observed behavior.\n\nBandit algorithms introduce uncertainty and exploration into the recommendation process.\n\nReinforcement learning extends the problem to long-term sequential decision-making.\n\nWe essentially move from\n\n$$\n\\text{vector geometry}\n\\longrightarrow\n\\text{statistical estimation}\n\\longrightarrow\n\\text{sequential optimization}.\n$$\n\nThe original dot product remains useful. It provides an efficient way to identify songs that align with our current understanding of a listener.\n\nBut a good recommendation system should do more than reproduce that understanding.\n\nIt should recognize what it does not know, explore uncertain preferences, and account for how its recommendations influence future behavior.\n\nAnd perhaps that is what makes recommendation systems so interesting.\n\n> **Should a recommendation system simply predict what I like, or should it also help me discover what I didn't know I liked?**"
     },
     {
       "id": "f3adec976f79558b",
@@ -2731,5 +2866,5 @@
       "content": "Label: Tofu's Pick\nDescription: Personally inspected, paw-approved, and curated by the resident spiritual mascot.\nEmbed Url: https://open.spotify.com/embed/track/3qzqexZ8YEYvaLbfGZedfh?utm_source=generator\nHeight: 152"
     }
   ],
-  "contentHash": "c3cf87aeb112ba86d0ffba3b312596702d6faeb1924c2f71ab3394c1bdbd5105"
+  "contentHash": "a11eec8bb308cfa642e424fd9e40d9bc68a622c19684bcee7cb705b11e0834c4"
 }
