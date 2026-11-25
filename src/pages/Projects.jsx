@@ -1,11 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import projects from "../data/projects";
 
-const chatEndpoint = import.meta.env.VITE_CHAT_API_URL?.trim();
-const githubEndpoint = chatEndpoint
-  ? new URL("/github", chatEndpoint).toString()
-  : null;
-
 const splitCategories = (category) =>
   category.split("/").map((item) => item.trim()).filter(Boolean);
 
@@ -105,16 +100,22 @@ function Projects() {
   useEffect(() => {
     async function fetchGithubData() {
       try {
-        if (!githubEndpoint) {
-          throw new Error("The GitHub snapshot endpoint is not configured.");
-        }
+        const [userResponse, repositoriesResponse] = await Promise.all([
+          fetch("https://api.github.com/users/JonathanMa03"),
+          fetch(
+            "https://api.github.com/users/JonathanMa03/repos?sort=pushed&direction=desc&per_page=100",
+          ),
+        ]);
+        const [userData, repoData] = await Promise.all([
+          userResponse.json(),
+          repositoriesResponse.json(),
+        ]);
 
-        const response = await fetch(githubEndpoint);
-        const payload = await response.json();
-        const userData = payload.user;
-        const repoData = payload.repositories;
-
-        if (!response.ok || !userData || !Array.isArray(repoData)) {
+        if (
+          !userResponse.ok
+          || !repositoriesResponse.ok
+          || !Array.isArray(repoData)
+        ) {
           throw new Error("GitHub data could not be loaded.");
         }
 

@@ -20,40 +20,6 @@ test('health endpoint does not disclose secrets', async () => {
   assert.deepEqual(await response.json(), { status: 'ok', modelConfigured: false });
 });
 
-test('returns a compact cached GitHub snapshot', async (context) => {
-  const originalFetch = globalThis.fetch;
-  context.after(() => { globalThis.fetch = originalFetch; });
-  globalThis.fetch = async (url) => {
-    if (url.endsWith('/users/JonathanMa03')) {
-      return Response.json({ public_repos: 36, followers: 1, following: 7 });
-    }
-
-    return Response.json([{
-      id: 123,
-      name: 'example',
-      html_url: 'https://github.com/JonathanMa03/example',
-      description: 'Example project',
-      language: 'Python',
-      stargazers_count: 2,
-      forks_count: 1,
-      pushed_at: '2026-11-24T12:00:00Z',
-      languages_url: 'https://api.github.com/unused',
-    }]);
-  };
-
-  const response = await worker.fetch(request('/github', {
-    headers: { Origin: origin },
-  }), baseEnv);
-  const payload = await response.json();
-
-  assert.equal(response.status, 200);
-  assert.deepEqual(payload.user, { public_repos: 36, followers: 1, following: 7 });
-  assert.equal(payload.repositories[0].language, 'Python');
-  assert.equal(payload.repositories[0].languages_url, undefined);
-  assert.equal(response.headers.get('Access-Control-Allow-Origin'), origin);
-  assert.match(response.headers.get('Cache-Control'), /max-age=300/);
-});
-
 test('rejects unknown origins', async () => {
   const response = await worker.fetch(request('/chat', {
     method: 'POST',
